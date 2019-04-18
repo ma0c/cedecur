@@ -8,5 +8,3 @@ ADD . /code/
 EXPOSE 8000
 
 CMD ["uwsgi", "--ini", "uwsgi.ini"]
-
-CMD ["python3"]

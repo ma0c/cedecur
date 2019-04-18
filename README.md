@@ -36,3 +36,9 @@ source ./cedecur_env/bin/activate
 pip install -r requirements.txt
 python manage.py runserver
 ```
+
+You can build your container
+
+```bash
+docker build -t contraslash/cedecur .
+```
