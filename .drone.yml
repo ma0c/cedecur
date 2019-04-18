@@ -1,0 +1,24 @@
+clone:
+  git:
+    image: plugins/git
+    recursive: true
+
+pipeline:
+
+
+  compile_test:
+    image: plugins/docker
+    repo: registry2.tranquifinanzas.com:5000/ma0/cedecur
+    username: finantic
+    password: F1n@nt1c
+    registry: registry2.tranquifinanzas.com:5000
+    tags: [ test , "${DRONE_COMMIT_SHA:0:8}", latest]
+    when:
+      branch: [test, master]
+
+  slack:
+    image: plugins/slack
+    webhook: https://hooks.slack.com/services/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
+    channel: devops
+    when:
+     status: [ success, failure ]

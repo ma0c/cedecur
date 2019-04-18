@@ -34,5 +34,5 @@ source ./cedecur_env/bin/activate
 
 # Then install the requirements
 pip install -r requirements.txt
-
+python manage.py runserver
 ```
