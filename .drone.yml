@@ -5,7 +5,6 @@ clone:
 
 pipeline:
 
-
   compile_test:
     image: plugins/docker
     repo: registry2.tranquifinanzas.com:5000/ma0/cedecur
