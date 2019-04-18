@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'rria@s#w9k$g9c_dfpo00f2(+p=4vf6%_3)5@s)^k=7pv=g!l7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', "False") == "True"
+ENV = os.environ.get('ENV', "LOCAL")
 
 ALLOWED_HOSTS = []
 
@@ -128,3 +129,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 if 'applications.authentication' in INSTALLED_APPS:
     LOGIN_URL = "log_in"
+
+if ENV == "PRODUCTION":
+    from config.settings_prod import *
