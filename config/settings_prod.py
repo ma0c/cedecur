@@ -2,7 +2,7 @@ import os
 
 ALLOWED_HOSTS = [
     # Allowed domains for env
-    "config.contraslash.com",
+    "142.93.22.249",
 ]
 
 DATABASE_NAME = os.environ.get("CONFIG_DATABASE_DATABASE", "")
@@ -23,11 +23,3 @@ DATABASES = {
         'PORT': DATABASE_PORT
     }
 }
-
-
-AWS_ACCESS_KEY_ID = os.environ.get("CONFIG_AWS_ACCESS_KEY_ID", "")
-AWS_SECRET_ACCESS_KEY = os.environ.get("CONFIG_AWS_SECRET_ACCESS_KEY", "")
-AWS_STORAGE_BUCKET_NAME = os.environ.get("CONFIG_AWS_STORAGE_BUCKET_NAME", "")
-AWS_S3_CUSTOM_DOMAIN = '{}.s3.amazonaws.com'.format(AWS_STORAGE_BUCKET_NAME)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATIC_URL = 'https://{}/'.format(AWS_S3_CUSTOM_DOMAIN)
