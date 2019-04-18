@@ -1,0 +1,9 @@
+[submodule "base"]
+	url = https://github.com/contraslash/base-django
+	path = base
+[submodule "authentication"]
+	url = https://github.com/contraslash/authentication-django
+	path = applications/authentication
+[submodule "template"]
+	url = https://github.com/contraslash/template_cdn_bootstrap
+	path = applications/base_template
