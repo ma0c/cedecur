@@ -1,0 +1,35 @@
+comercio - joyeria y accesorios varios
+comercio - inmobiliaria 
+servicios - embellecimiento de autos
+servicios - optica
+servicios  - pizzeria
+servicios - arte y naturaleza
+servicios - pizzeria
+servicios  - restaurante
+servicios - inmobiliaria 
+servicios - confección de ropa
+servicios  - diseño web, software 
+servicios - asesorias
+comercio - perfumeria
+servicios  - tipografia av
+servicios  - alquiler equipos
+comercio - cuero - artesanias 
+servicios - restaurante
+servicios  - escuela
+servicios - servicios de aseo
+comercio - reposteria
+servicios - servicios ambientales 
+servicios - servicios para eventos, comidas y meseros
+industria - almacen 
+industria - cerrajería 
+comercio - panaderia
+comercio - tienda
+comercio - bebidas ancestrales del pacífico
+industria - fabrica equipos refrigeración 
+comercio - ventas online 
+servicios - tienda
+servicios - servicio medico
+servicios - salud
+servicios - servicios logistica
+comercio - venta ropa materna
+servicios  - suministros para la construccion

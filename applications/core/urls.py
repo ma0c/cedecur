@@ -1,6 +1,10 @@
 from django.urls import path
 from django.views.generic import TemplateView
 
+from applications.core import conf
+
+from .views import enterprise
+
 urlpatterns = [
     path(
         '',
@@ -9,10 +13,24 @@ urlpatterns = [
 
     path(
         'perfiles',
-        TemplateView.as_view(template_name="core/perfiles1.html")
+        enterprise.Entreprenours.as_view(),
+        name=conf.ENTERPRISE_ENTREPRENOURS_URL_NAME
+    ),
+    path(
+        'perfiles/categoria/<slug:slug>/',
+        enterprise.EntreprenoursFilteredByCategory.as_view(),
+        name=conf.ENTERPRISE_ENTREPRENOURS_CATEGORY_URL_NAME
+    ),
+    path(
+        'perfiles/subcategoria/<slug:slug>/',
+        enterprise.EntreprenoursFilteredBySubCategory.as_view(),
+        name=conf.ENTERPRISE_ENTREPRENOURS_SUBCATEGORY_URL_NAME
     ),
     path(
         'informacion',
-        TemplateView.as_view(template_name="core/informacion1.html")
+        TemplateView.as_view(template_name="core/informacion.html")
     )
 ]
+
+from applications.core import urls_slug
+urlpatterns += urls_slug.urlpatterns
