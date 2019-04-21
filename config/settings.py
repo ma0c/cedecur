@@ -134,3 +134,9 @@ if 'applications.authentication' in INSTALLED_APPS:
 
 if ENV == "PRODUCTION":
     from config.settings_prod import *
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(
+    BASE_DIR,
+    "media"
+)

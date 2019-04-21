@@ -50,7 +50,13 @@
                                 <div class="product-item">
                                     <div class="pi-pic shift_the_nav">
                                         <!--<div class="tag-sale">ON SALE</div>-->
-                                        <a href="/informacion"><img src="{% static 'img/default-placeholder.png' %}" alt=""></a>
+                                        <a href="/informacion">
+                                            {% if enterprise.picture %}
+                                                <img src="{{ enterprise.picture.url }}" alt="">
+                                            {% else %}
+                                                <img src="{% static 'img/default-placeholder.png' %}" alt="">
+                                            {% endif %}
+                                        </a>
                                             <div class="fondo-cuadro-2">
                                                 <br>
                                                 <br>
