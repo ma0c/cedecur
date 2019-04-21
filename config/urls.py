@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+from django.conf import LazySettings
+
+settings = LazySettings()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,3 +31,8 @@ urlpatterns = [
         include("applications.authentication.urls")
     )
 ]
+
+urlpatterns += static(
+    settings.MEDIA_ROOT,
+    document_root=settings.MEDIA_ROOT
+)

@@ -1,5 +1,7 @@
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 ALLOWED_HOSTS = [
     # Allowed domains for env
     "142.93.22.249",
@@ -23,3 +25,9 @@ DATABASES = {
         'PORT': DATABASE_PORT
     }
 }
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(
+    BASE_DIR,
+    "media"
+)
