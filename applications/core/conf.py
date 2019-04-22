@@ -2,6 +2,28 @@ from django.utils.translation import ugettext_lazy as _
 
 from base import conf
 
+ENTERPRISE_MANAGER_GROUP_NAME = _("Enterprise Manager")
+
+PERMISSIONS = {
+    # '': {
+    #     'app_label': 'core',
+    #     'model': 'core',
+    #     'codename': 'code_name_for_permissions',
+    # }
+}
+
+GROUPS = {
+    'manager_enterprise': {
+        "name": ENTERPRISE_MANAGER_GROUP_NAME,
+        'permissions': [
+            "change_enterprise",
+            "add_product",
+            "change_product",
+            "delete_product"
+        ]
+    },
+}
+
 USER_CREATED = _("User created: {}")
 USER_ALREADY_CREATED = _("User  already created: {}")
 
@@ -47,8 +69,20 @@ ENTERPRISE_DELETE_URL_NAME = ENTERPRISE_PREFIX + conf.DELETE_SUFFIX
 ENTERPRISE_ENTREPRENOURS_URL_NAME = ENTERPRISE_PREFIX + "_entreprenours"
 ENTERPRISE_ENTREPRENOURS_CATEGORY_URL_NAME = ENTERPRISE_PREFIX + "_entreprenours_category"
 ENTERPRISE_ENTREPRENOURS_SUBCATEGORY_URL_NAME = ENTERPRISE_PREFIX + "_entreprenours_subcategory"
+ENTERPRISE_ADD_PRODUCT_URL_NAME = ENTERPRISE_PREFIX + "_add_product"
+ENTERPRISE_SLUG_URL_KWARG = "slug_enterprise"
 
 ENTERPRISE_CREATED = _("Subcategory created: {}")
 ENTERPRISE_ALREADY_CREATED = _("Subcategory  already created: {}")
 
 
+PRODUCT_PREFIX = "PRODUCT"
+
+PRODUCT_VERBOSE_NAME = _("Product")
+PRODUCT_VERBOSE_NAME_PLURAL = _("Product")
+
+PRODUCT_LIST_URL_NAME = PRODUCT_PREFIX + conf.LIST_SUFFIX
+PRODUCT_CREATE_URL_NAME = PRODUCT_PREFIX + conf.CREATE_SUFFIX
+PRODUCT_DETAIL_URL_NAME = PRODUCT_PREFIX + conf.DETAIL_SUFFIX
+PRODUCT_UPDATE_URL_NAME = PRODUCT_PREFIX + conf.UPDATE_SUFFIX
+PRODUCT_DELETE_URL_NAME = PRODUCT_PREFIX + conf.DELETE_SUFFIX

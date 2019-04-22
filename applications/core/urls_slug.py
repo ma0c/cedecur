@@ -73,29 +73,65 @@ from .views import enterprise
 urlpatterns += [
     # enterprise
     path(
-        'enterprise/',
+        'empresa/',
         enterprise.List.as_view(),
         name=conf.ENTERPRISE_LIST_URL_NAME
     ),
     path(
-        'enterprise/create/',
+        'empresa/create/',
         enterprise.Create.as_view(),
         name=conf.ENTERPRISE_CREATE_URL_NAME
     ),
     path(
-        'enterprise/<slug:slug>/',
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/',
         enterprise.Detail.as_view(),
         name=conf.ENTERPRISE_DETAIL_URL_NAME
     ),
     path(
-        'enterprise/<slug:slug>/update/',
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/actualizar/',
         enterprise.Update.as_view(),
         name=conf.ENTERPRISE_UPDATE_URL_NAME
     ),
     path(
-        'enterprise/<slug:slug>/delete/',
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/eliminar/',
         enterprise.Delete.as_view(),
         name=conf.ENTERPRISE_DELETE_URL_NAME
     ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/agregar-producto/',
+        enterprise.AddProduct.as_view(),
+        name=conf.ENTERPRISE_ADD_PRODUCT_URL_NAME
+    ),
 ]
+
+# from .views import product
+#
+# urlpatterns += [
+#     # product
+#     path(
+#         'product/',
+#         product.List.as_view(),
+#         name=conf.PRODUCT_LIST_URL_NAME
+#     ),
+#     path(
+#         'product/create/',
+#         product.Create.as_view(),
+#         name=conf.PRODUCT_CREATE_URL_NAME
+#     ),
+#     path(
+#         'product/<slug:slug>/',
+#         product.Detail.as_view(),
+#         name=conf.PRODUCT_DETAIL_URL_NAME
+#     ),
+#     path(
+#         'product/<slug:slug>/update/',
+#         product.Update.as_view(),
+#         name=conf.PRODUCT_UPDATE_URL_NAME
+#     ),
+#     path(
+#         'product/<slug:slug>/delete/',
+#         product.Delete.as_view(),
+#         name=conf.PRODUCT_DELETE_URL_NAME
+#     ),
+# ]
 

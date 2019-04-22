@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load i18n %}
 {% block title %}CEDECUR | Información (1){% endblock %}
 {% block content %}
 
@@ -10,7 +11,7 @@
 			<div class="container text-center">
 				<div class="row">
 				<div class="site-pagination col-1 col-xl-1">
-					<a href="../cedecur/perfiles1.html"><img src="{% static 'img/btn-volver.png' %}" alt=""></a>
+					<a href="javascript:window.history.back();"><img src="{% static 'img/btn-volver.png' %}" alt=""></a>
 					<!--<a href="../cedecur/index.html">Inicio</a> /
 					<a href="../cedecur/perfiles1.html">Atras</a>-->
 				</div>
@@ -58,12 +59,23 @@
 					<div class="filter-widget mb-0">
 						<div class="price-range-wrap">
 							<div class="logo-image shift_the_nav">
-								<img src="{% static 'img/default-placeholder.png' %}" alt="">
+								{% if enterprise.picture %}
+                                    <img src="{{ enterprise.picture.url }}" alt="">
+                                {% else %}
+                                    <img src="{% static 'img/default-placeholder.png' %}" alt="">
+                                {% endif %}
 							</div>
 							<div class="informacion-basica filter-widget text-center">
 								<h2 class="fw-title">Información Basica</h2>
-								<p1>Nombre:</p1>
+								<p1>Nombre : {{ enterprise.name }}</p1>
 							</div>
+                            {% if update_object_reversed_url %}
+                                <a href="{{ update_object_reversed_url }}">
+                                    <button class="btn btn-primary">
+                                        {% trans 'Update' %}
+                                    </button>
+                                </a>
+                            {% endif %}
                         </div>
 					</div>
 					<div class="filter-widget mb-0">
@@ -138,115 +150,61 @@
 					<div class="row"> 
 							<div class="col-12 col-xl-12 text-center">
 								<div class="branding-borde">
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>	
-									<h5>Branding de la Marca</h5>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
+                                    {% if enterprise.description %}
+
+                                        {{ enterprise.description }}
+
+                                    {% else %}
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <h5>Branding de la Marca</h5>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                    {% endif %}
 								</div>		
 							</div>
 							<div class="fondo-cuadro shift_the_nav text-center col-12 col-xl-12">
 									<h4 class="fw-title">Muestreario del Producto</h4>
-								</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<!--<div class="tag-sale">ON SALE</div>-->
-									<img src="{% static 'img/default-placeholder.png' %}" alt="">
-									<div class="pi-links">
-										<!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<!--<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Black and White Stripes Dress</p>
-								</div>-->
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="{% static 'img/default-placeholder.png' %}" alt="">
-									<div class="pi-links">
-										<!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<!--<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top</p>
-								</div>-->
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="{% static 'img/default-placeholder.png' %}" alt="">
-									<div class="pi-links">
-										<!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<!--<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>-->
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="{% static 'img/default-placeholder.png' %}" alt="">
-									<div class="pi-links">
-										<!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<!--<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Black and White Stripes Dress</p>
-								</div>-->
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="{% static 'img/default-placeholder.png' %}" alt="">
-									<div class="pi-links">
-										<!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<!--<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top</p>
-								</div>-->
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="{% static 'img/default-placeholder.png' %}" alt="">
-									<div class="pi-links">
-										<!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<!--<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>-->
-							</div>
-						</div>
+                            </div>
+                            {% for product in enterprise.product_set.all %}
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="product-item">
+                                        <div class="pi-pic">
+                                            <!--<div class="tag-sale">ON SALE</div>-->
+                                            {% if product.picture %}
+                                                <img src="{{ product.picture.url }}" alt="">
+                                            {% else %}
+                                                <img src="{% static 'img/default-placeholder.png' %}" alt="">
+                                            {% endif %}
+                                            <div class="pi-links">
+                                                <!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
+                                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                            </div>
+                                        </div>
+                                        <!--<div class="pi-text">
+                                            <h6>$35,00</h6>
+                                            <p>Black and White Stripes Dress</p>
+                                        </div>-->
+                                    </div>
+                                </div>
+                            {% empty %}
+                                {% trans 'There are not products available' %}
+                            {% endfor %}
+                    {% if add_product_reversed_url %}
+                        <div class="col-12 col-xl-12">
+                            <a href="{{ add_product_reversed_url }}">
+                                <button>{% trans 'Add product' %}</button>
+                            </a>
+                        </div>
+                    {% endif %}
 						<div class="col-12 col-xl-12 contact-info">
 								<form class="contact-form text-center">
 									<input type="text" placeholder="Nombre">
@@ -256,108 +214,15 @@
 									<button class="site-btn">ENVIAR</button>
 								</form>
 								</div>
-						<!--<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/5.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/9.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/1.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<div class="tag-new">new</div>
-									<img src="./img/product/2.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Black and White Stripes Dress</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/3.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-6">
-							<div class="product-item">
-								<div class="pi-pic">
-									<img src="./img/product/4.jpg" alt="">
-									<div class="pi-links">
-										<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
-										<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-									</div>
-								</div>
-								<div class="pi-text">
-									<h6>$35,00</h6>
-									<p>Flamboyant Pink Top </p>
-								</div>
-							</div>
-						</div>
-						<div class="text-center w-100 pt-3">
-							<button class="site-btn sb-line sb-dark">LOAD MORE</button>
-						</div>-->
+
 					</div>
 				</div>
 				<div class="col-1 col-lg-1 order-3 order-lg-3 text-center d-none d-sm-block">
 						<div class="social-box contact-social social-links shift_the_nav">
 							
-							<p><a href="#"><i class="fa fa-facebook"></i></a></p>
-							<p><a href="#"><i class="fa fa-twitter"></i></a></p>
-							<p><a href="#"><i class="fa fa-youtube"></i></a></p>
+							<p><a href="{{ enterprise.facebook_url|default:"#" }}"><i class="fa fa-facebook"></i></a></p>
+							<p><a href="{{ enterprise.twitter_url|default:"#" }}"><i class="fa fa-twitter"></i></a></p>
+							<p><a href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
 						</div>
 				</div>
 			</div>

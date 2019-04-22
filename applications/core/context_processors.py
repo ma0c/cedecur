@@ -10,3 +10,9 @@ def categories(request):
         "category_filter_url_name": core_conf.ENTERPRISE_ENTREPRENOURS_CATEGORY_URL_NAME,
         "subcategory_filter_url_name": core_conf.ENTERPRISE_ENTREPRENOURS_SUBCATEGORY_URL_NAME
     }
+
+
+def enterprise(request):
+    return {
+        "enterprise_detail_url": core_conf.ENTERPRISE_DETAIL_URL_NAME
+    }

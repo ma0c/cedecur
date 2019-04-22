@@ -1,3 +1,5 @@
+from django.contrib.auth.models import Group
+
 from applications.core import (
     conf as core_conf,
     models as core_models,
@@ -108,4 +110,6 @@ data_loader.create_enterprises("applications/core/fixtures/info.csv")
             user.save()
         else:
             print(core_conf.USER_ALREADY_CREATED.format(username))
+        enterprise_manager_group = Group.objects.get(name=core_conf.ENTERPRISE_MANAGER_GROUP_NAME)
+        user.groups.add(enterprise_manager_group)
         return user
