@@ -54,8 +54,8 @@ class Product(base_models.FullSlugBaseModel):
     picture = models.FileField()
 
     class Meta:
-        verbose_name = ""
-        verbose_name_plural = ""
+        verbose_name = core_conf.PRODUCT_VERBOSE_NAME
+        verbose_name_plural = core_conf.PRODUCT_VERBOSE_NAME_PLURAL
 
 
 class Discounts(base_models.FullSlugBaseModel):
@@ -77,5 +77,5 @@ class Discounts(base_models.FullSlugBaseModel):
         return super().save(force_insert, force_update, using, update_fields)
 
     class Meta:
-        verbose_name = ""
-        verbose_name_plural = ""
+        verbose_name = core_conf.DISCOUNTS_VERBOSE_NAME
+        verbose_name_plural = core_conf.DISCOUNTS_VERBOSE_NAME_PLURAL

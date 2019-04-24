@@ -93,12 +93,7 @@ data_loader.create_enterprises("applications/core/fixtures/info.csv")
                 print(core_conf.ENTERPRISE_ALREADY_CREATED.format(subcategory))
 
     def create_user_from_name(self, name):
-        tokens = name.split()
-        print(len(tokens))
-        if 0 < len(tokens) < 3:
-            username = "-".join(tokens).lower()
-        else:
-            username = f"{tokens[0]}-{tokens[2]}".lower()
+        username, password = self.generate_username_and_password(name)
 
         user, created = core_models.User.objects.get_or_create(
             username=username
@@ -106,10 +101,41 @@ data_loader.create_enterprises("applications/core/fixtures/info.csv")
 
         if created:
             print(core_conf.USER_CREATED.format(username))
-            user.set_password("-".join(tokens).lower())
+            user.set_password(password)
             user.save()
         else:
             print(core_conf.USER_ALREADY_CREATED.format(username))
         enterprise_manager_group = Group.objects.get(name=core_conf.ENTERPRISE_MANAGER_GROUP_NAME)
         user.groups.add(enterprise_manager_group)
         return user
+
+    def generate_username_and_password(self, name):
+        tokens = name.split()
+        print(len(tokens))
+        if 0 < len(tokens) < 3:
+            username = "-".join(tokens).lower()
+        else:
+            username = f"{tokens[0]}-{tokens[2]}".lower()
+
+        password = "-".join(tokens).lower()
+        return username, password
+
+
+    def create_file_with_users_and_passwords(self, all_data_file, output_file_name):
+        """
+from applications.core.controllers import load_data
+data_loader = load_data.LoadData()
+data_loader.create_file_with_users_and_passwords("applications/core/fixtures/info.csv", "applications/core/fixtures/username_and_passwords.csv")
+        :param all_data_file:
+        :param output_file_name:
+        :return:
+        """
+        all_data = core_utils.read_data(all_data_file)
+        print(output_file_name)
+        output_file = open(output_file_name, "w+")
+        output_file.write("emprendimiento,username,password\n")
+        for line in all_data[1:]:
+            username, password = self.generate_username_and_password(line[2])
+            output_file.write(f"{line[1]},{username},{password}\n")
+
+        output_file.close()

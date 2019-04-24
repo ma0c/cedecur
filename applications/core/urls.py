@@ -12,17 +12,17 @@ urlpatterns = [
     ),
 
     path(
-        'perfiles',
+        'emprendedores',
         enterprise.Entreprenours.as_view(),
         name=conf.ENTERPRISE_ENTREPRENOURS_URL_NAME
     ),
     path(
-        'perfiles/categoria/<slug:slug>/',
+        'emprendedores/categoria/<slug:slug>/',
         enterprise.EntreprenoursFilteredByCategory.as_view(),
         name=conf.ENTERPRISE_ENTREPRENOURS_CATEGORY_URL_NAME
     ),
     path(
-        'perfiles/subcategoria/<slug:slug>/',
+        'emprendedores/subcategoria/<slug:slug>/',
         enterprise.EntreprenoursFilteredBySubCategory.as_view(),
         name=conf.ENTERPRISE_ENTREPRENOURS_SUBCATEGORY_URL_NAME
     ),

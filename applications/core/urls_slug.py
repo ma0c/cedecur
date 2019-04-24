@@ -135,3 +135,34 @@ urlpatterns += [
 #     ),
 # ]
 
+# from .views import discounts
+#
+# urlpatterns += [
+#     # discounts
+#     path(
+#         'discounts/',
+#         discounts.List.as_view(),
+#         name=conf.DISCOUNTS_LIST_URL_NAME
+#     ),
+#     path(
+#         'discounts/create/',
+#         discounts.Create.as_view(),
+#         name=conf.DISCOUNTS_CREATE_URL_NAME
+#     ),
+#     path(
+#         'discounts/<slug:slug>/',
+#         discounts.Detail.as_view(),
+#         name=conf.DISCOUNTS_DETAIL_URL_NAME
+#     ),
+#     path(
+#         'discounts/<slug:slug>/update/',
+#         discounts.Update.as_view(),
+#         name=conf.DISCOUNTS_UPDATE_URL_NAME
+#     ),
+#     path(
+#         'discounts/<slug:slug>/delete/',
+#         discounts.Delete.as_view(),
+#         name=conf.DISCOUNTS_DELETE_URL_NAME
+#     ),
+# ]
+#

@@ -76,6 +76,11 @@ class Detail(
     def __init__(self):
         super(Detail, self).__init__()
 
+    def kwargs_for_reverse_url(self):
+        return {
+            conf.ENTERPRISE_SLUG_URL_KWARG: self.get_object().slug
+        }
+
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
 
