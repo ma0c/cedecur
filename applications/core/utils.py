@@ -1,4 +1,7 @@
 import csv
+import qrcode
+import base64
+from io import BytesIO
 
 
 def save_iterable_to_a_file(iterable, filename):
@@ -39,5 +42,18 @@ extract_categories("fixtures/info.csv")
     save_iterable_to_a_file(categories_attached, "fixtures/categories_attached.txt")
 
 
+def get_base64_qr_code(data):
+    qr_image = qrcode.QRCode(
+        version=1,
+        error_correction=qrcode.constants.ERROR_CORRECT_L,
+        box_size=10,
+        border=4,
+    )
+    qr_image.add_data(data)
+    qr_image.make(fit=True)
 
+    img = qr_image.make_image()
 
+    buffered_image = BytesIO()
+    img.save(buffered_image, format="JPEG")
+    return base64.b64encode(buffered_image.getvalue()).decode()

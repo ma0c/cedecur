@@ -4,6 +4,7 @@ try:
 except ImportError:
     from django.urls import reverse_lazy
 from django import http
+from django.utils import timezone
 
 
 from base import views as base_views
@@ -18,7 +19,8 @@ from applications.core import (
 )
 
 from applications.core.views import (
-    product
+    product,
+    discounts
 )
 
 
@@ -84,6 +86,13 @@ class Detail(
     def get_context_data(self, **kwargs):
         context = super(Detail, self).get_context_data(**kwargs)
 
+        context["discounts"] = models.Discounts.objects.filter(
+            product__enterprise=self.get_enterprise(),
+            expires_on__gte=timezone.now()
+        )
+
+        context["discount_qr_code_url"] = conf.DISCOUNTS_QR_CODE_URL_NAME
+
         if self.request.user.has_perm("core.change_enterprise") and self.get_object().owner == self.request.user:
             context['update_object_reversed_url'] = reverse_lazy(
                 conf.ENTERPRISE_UPDATE_URL_NAME,
@@ -99,9 +108,14 @@ class Detail(
         if self.request.user.has_perm("core.add_product") and self.get_object().owner == self.request.user:
             context['add_product_reversed_url'] = reverse_lazy(
                 conf.ENTERPRISE_ADD_PRODUCT_URL_NAME,
-                kwargs={
-                    conf.ENTERPRISE_SLUG_URL_KWARG: self.get_object().slug
-                }
+                kwargs=self.kwargs_for_reverse_url()
+            )
+
+        print(self.request.user.has_perm("core.add_discounts"))
+        if self.request.user.has_perm("core.add_discounts") and self.get_object().owner == self.request.user:
+            context['add_discount_reversed_url'] = reverse_lazy(
+                conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME,
+                kwargs=self.kwargs_for_reverse_url()
             )
 
         return context
@@ -194,6 +208,28 @@ class AddProduct(
         return reverse_lazy(
             conf.ENTERPRISE_DETAIL_URL_NAME,
             kwargs={
-                "slug": self.get_enterprise().slug
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
+class AddDiscount(
+    mixins.EnterpriseMixin,
+    mixins.OwnershipEnterpriseMixin,
+    discounts.Create
+):
+    form_class = forms.DiscountsMinimal
+    slug_url_kwarg = conf.ENTERPRISE_SLUG_URL_KWARG
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields["product"].queryset = models.Product.objects.filter(enterprise=self.get_enterprise())
+        return form
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
             }
         )

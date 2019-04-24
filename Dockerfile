@@ -1,4 +1,4 @@
-FROM contraslash/alpine-django-deploy-common
+FROM contraslash/alpine-django-deploy-common-with-pillow
 
 RUN mkdir /code
 WORKDIR /code
