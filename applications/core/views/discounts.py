@@ -11,7 +11,8 @@ from base import views as base_views
 from .. import (
     models,
     forms,
-    conf
+    conf,
+    utils
 )
 
 
@@ -112,3 +113,17 @@ class Delete(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseDeleteV
 
     def get_success_url(self):
         return reverse_lazy(conf.DISCOUNTS_LIST_URL_NAME)
+
+
+class QRCode(
+    base_views.BaseDetailView
+):
+    model = models.Discounts
+    template_name = "core/discounts/qr_code.html"
+    context_object_name = "element"
+
+    def get_context_data(self, **kwargs):
+        context = super(QRCode, self).get_context_data(**kwargs)
+        context['qr_image'] = utils.get_base64_qr_code(self.get_object().code)
+
+        return context

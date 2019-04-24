@@ -81,11 +81,28 @@
 					<div class="filter-widget mb-0">
 						<div class="descuentos filter-widget text-center mb-0">
 							<h2 class="fw-title">Descuentos</h2>
-							<div class="cuadro-descuentos-verde shift_the_nav">
-								<br>	
-								<p>Descuento 1</p>							
-								<br>
-							</div>	
+                            {% for discount in discounts %}
+                                <a href="{% url discount_qr_code_url discount.slug %}" target="_blank">
+
+                                    <div class="cuadro-descuentos-verde shift_the_nav">
+                                        <br>
+                                        <p>{{ discount.product }}</p>
+                                        <span>
+                                            {% trans "Expires" %} : {{ discount.expires_on|date:"d F Y" }}
+                                        </span>
+                                        <br>
+                                    </div>
+                                </a>
+                            {% empty %}
+
+                            {% endfor %}
+                             {% if add_discount_reversed_url %}
+                                <a href="{{ add_discount_reversed_url }}">
+                                    <button class="btn btn-primary">
+                                        {% trans 'Add Discount' %}
+                                    </button>
+                                </a>
+                            {% endif %}
 						</div>
 					</div>
 					<div class="filter-widget mb-0">

@@ -53,6 +53,9 @@ class Product(base_models.FullSlugBaseModel):
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
     picture = models.FileField()
 
+    def __str__(self):
+        return f"{self.id} {self.enterprise}"
+
     class Meta:
         verbose_name = core_conf.PRODUCT_VERBOSE_NAME
         verbose_name_plural = core_conf.PRODUCT_VERBOSE_NAME_PLURAL
@@ -65,6 +68,9 @@ class Discounts(base_models.FullSlugBaseModel):
     code = models.CharField(max_length=CODE_LENGTH, unique=True)
 
     expires_on = models.DateTimeField()
+
+    def __str__(self):
+        return f"{self.product.enterprise} {self.product} {self.expires_on}"
 
     @staticmethod
     def create_code(length=CODE_LENGTH):

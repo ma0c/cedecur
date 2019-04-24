@@ -19,7 +19,10 @@ GROUPS = {
             "change_enterprise",
             "add_product",
             "change_product",
-            "delete_product"
+            "delete_product",
+            "add_discounts",
+            "change_discounts",
+            "delete_discounts"
         ]
     },
 }
@@ -70,6 +73,7 @@ ENTERPRISE_ENTREPRENOURS_URL_NAME = ENTERPRISE_PREFIX + "_entreprenours"
 ENTERPRISE_ENTREPRENOURS_CATEGORY_URL_NAME = ENTERPRISE_PREFIX + "_entreprenours_category"
 ENTERPRISE_ENTREPRENOURS_SUBCATEGORY_URL_NAME = ENTERPRISE_PREFIX + "_entreprenours_subcategory"
 ENTERPRISE_ADD_PRODUCT_URL_NAME = ENTERPRISE_PREFIX + "_add_product"
+ENTERPRISE_ADD_DISCOUNT_URL_NAME = ENTERPRISE_PREFIX + "_add_discount"
 ENTERPRISE_SLUG_URL_KWARG = "slug_enterprise"
 
 ENTERPRISE_CREATED = _("Subcategory created: {}")
@@ -96,4 +100,5 @@ DISCOUNTS_CREATE_URL_NAME = DISCOUNTS_PREFIX + conf.CREATE_SUFFIX
 DISCOUNTS_DETAIL_URL_NAME = DISCOUNTS_PREFIX + conf.DETAIL_SUFFIX
 DISCOUNTS_UPDATE_URL_NAME = DISCOUNTS_PREFIX + conf.UPDATE_SUFFIX
 DISCOUNTS_DELETE_URL_NAME = DISCOUNTS_PREFIX + conf.DELETE_SUFFIX
+DISCOUNTS_QR_CODE_URL_NAME = DISCOUNTS_PREFIX + "_qr_code"
 

@@ -43,11 +43,17 @@ class ProductNoEnterprise(Product):
         ]
 
 
-
-
 class Discounts(forms.ModelForm):
     class Meta:
         model = models.Discounts
         fields = '__all__'
         widgets = generate_bootstrap_widgets_for_all_fields(models.Discounts)
 
+
+class DiscountsMinimal(Discounts):
+    class Meta(Discounts.Meta):
+        fields = [
+            "product",
+            "description",
+            "expires_on"
+        ]

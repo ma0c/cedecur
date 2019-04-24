@@ -102,6 +102,11 @@ urlpatterns += [
         enterprise.AddProduct.as_view(),
         name=conf.ENTERPRISE_ADD_PRODUCT_URL_NAME
     ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/agregar-descuento/',
+        enterprise.AddDiscount.as_view(),
+        name=conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME
+    ),
 ]
 
 # from .views import product
@@ -135,9 +140,9 @@ urlpatterns += [
 #     ),
 # ]
 
-# from .views import discounts
-#
-# urlpatterns += [
+from .views import discounts
+
+urlpatterns += [
 #     # discounts
 #     path(
 #         'discounts/',
@@ -164,5 +169,10 @@ urlpatterns += [
 #         discounts.Delete.as_view(),
 #         name=conf.DISCOUNTS_DELETE_URL_NAME
 #     ),
-# ]
-#
+    path(
+        'discounts/<slug:slug>/qr/',
+        discounts.QRCode.as_view(),
+        name=conf.DISCOUNTS_QR_CODE_URL_NAME
+    ),
+]
+

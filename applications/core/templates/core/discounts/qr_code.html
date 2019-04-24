@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <div class="row ">
+
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+                <h1 style="color: black">{% trans "Discount for "%} {{ element.product }}</h1>
+            <br>
+            <p style="color: black">
+                {% trans "Valid until" %} {{ element.expires_on|date:"Y F d" }}
+            </p>
+                <img src="data:image/jpeg;base64, {{ qr_image }}" alt="qr_code" class="img-responsive">
+                <p style="color: black">
+                    {{ element.id }} - {{ element.code }}
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    </div>
+{% endblock %}
+{% block specific-js %}
+    <script>
+    setTimeout(function()
+    {
+        print();
+
+    }, 3000);
+    </script>
+{% endblock %}
