@@ -8,3 +8,5 @@ static
 static.zip
 media
 run.sh
+_pycache_
+*pyc
