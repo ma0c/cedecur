@@ -107,6 +107,11 @@ urlpatterns += [
         enterprise.AddDiscount.as_view(),
         name=conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME
     ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/agregar-mensaje/',
+        enterprise.AddContact.as_view(),
+        name=conf.ENTERPRISE_ADD_CONTACT_URL_NAME
+    ),
 ]
 
 # from .views import product
@@ -175,4 +180,35 @@ urlpatterns += [
         name=conf.DISCOUNTS_QR_CODE_URL_NAME
     ),
 ]
+
+# from .views import contact
+#
+# urlpatterns += [
+#     # contact
+#     path(
+#         'contact/',
+#         contact.List.as_view(),
+#         name=conf.CONTACT_LIST_URL_NAME
+#     ),
+#     path(
+#         'contact/create/',
+#         contact.Create.as_view(),
+#         name=conf.CONTACT_CREATE_URL_NAME
+#     ),
+#     path(
+#         'contact/<slug:slug>/',
+#         contact.Detail.as_view(),
+#         name=conf.CONTACT_DETAIL_URL_NAME
+#     ),
+#     path(
+#         'contact/<slug:slug>/update/',
+#         contact.Update.as_view(),
+#         name=conf.CONTACT_UPDATE_URL_NAME
+#     ),
+#     path(
+#         'contact/<slug:slug>/delete/',
+#         contact.Delete.as_view(),
+#         name=conf.CONTACT_DELETE_URL_NAME
+#     ),
+# ]
 

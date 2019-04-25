@@ -85,3 +85,13 @@ class Discounts(base_models.FullSlugBaseModel):
     class Meta:
         verbose_name = core_conf.DISCOUNTS_VERBOSE_NAME
         verbose_name_plural = core_conf.DISCOUNTS_VERBOSE_NAME_PLURAL
+
+
+class Contact(base_models.FullSlugBaseModel):
+    enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
+    email = models.EmailField()
+    title = models.TextField()
+
+    class Meta:
+        verbose_name = core_conf.CONTACT_VERBOSE_NAME
+        verbose_name_plural = core_conf.CONTACT_VERBOSE_NAME_PLURAL

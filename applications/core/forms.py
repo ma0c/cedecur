@@ -57,3 +57,16 @@ class DiscountsMinimal(Discounts):
             "description",
             "expires_on"
         ]
+
+
+class Contact(forms.ModelForm):
+    class Meta:
+        model = models.Contact
+        fields = [
+            "name",
+            "email",
+            "title",
+            "description"
+        ]
+        widgets = generate_bootstrap_widgets_for_all_fields(models.Contact)
+

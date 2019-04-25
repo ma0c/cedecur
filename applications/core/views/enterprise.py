@@ -5,6 +5,7 @@ except ImportError:
     from django.urls import reverse_lazy
 from django import http
 from django.utils import timezone
+from django.contrib import messages
 
 
 from base import views as base_views
@@ -20,7 +21,8 @@ from applications.core import (
 
 from applications.core.views import (
     product,
-    discounts
+    discounts,
+    contact
 )
 
 
@@ -111,12 +113,16 @@ class Detail(
                 kwargs=self.kwargs_for_reverse_url()
             )
 
-        print(self.request.user.has_perm("core.add_discounts"))
         if self.request.user.has_perm("core.add_discounts") and self.get_object().owner == self.request.user:
             context['add_discount_reversed_url'] = reverse_lazy(
                 conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME,
                 kwargs=self.kwargs_for_reverse_url()
             )
+
+        context["add_contact_reversed_url"] = reverse_lazy(
+            conf.ENTERPRISE_ADD_CONTACT_URL_NAME,
+            kwargs=self.kwargs_for_reverse_url()
+        )
 
         return context
 
@@ -225,6 +231,33 @@ class AddDiscount(
         form = super().get_form(form_class)
         form.fields["product"].queryset = models.Product.objects.filter(enterprise=self.get_enterprise())
         return form
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
+class AddContact(
+    mixins.EnterpriseMixin,
+    contact.Create
+):
+    form_class = forms.Contact
+    slug_url_kwarg = conf.ENTERPRISE_SLUG_URL_KWARG
+
+    def form_valid(self, form):
+        contact = form.save(commit=False)
+        contact.enterprise = self.get_enterprise()
+        contact.save()
+        messages.add_message(
+            self.request,
+            messages.INFO,
+            conf.MESSAGE_POSTED_SUCCESSFULLY
+        )
+        return http.HttpResponseRedirect(self.get_success_url())
 
     def get_success_url(self):
         return reverse_lazy(
