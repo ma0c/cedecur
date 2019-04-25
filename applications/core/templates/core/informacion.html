@@ -234,14 +234,21 @@
 
 					</div>
 				</div>
-				<div class="col-1 col-lg-1 order-3 order-lg-3 text-center d-none d-sm-block">
-						<div class="social-box contact-social social-links shift_the_nav">
-							
-							<p><a href="{{ enterprise.facebook_url|default:"#" }}"><i class="fa fa-facebook"></i></a></p>
-							<p><a href="{{ enterprise.twitter_url|default:"#" }}"><i class="fa fa-twitter"></i></a></p>
-							<p><a href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
-						</div>
-				</div>
+                {% if enterprise.facebook_url or enterprise.twitter_url or enterprise.youtube_url %}
+                    <div class="col-1 col-lg-1 order-3 order-lg-3 text-center d-none d-sm-block">
+                            <div class="social-box contact-social social-links shift_the_nav">
+                                {% if enterprise.facebook_url %}
+                                    <p><a href="{{ enterprise.facebook_url|default:"#" }}"><i class="fa fa-facebook"></i></a></p>
+                                {% endif %}
+                                {% if enterprise.twitter_url %}
+                                    <p><a href="{{ enterprise.twitter_url|default:"#" }}"><i class="fa fa-twitter"></i></a></p>
+                                {% endif %}
+                                {% if enterprise.youtube_url %}
+                                    <p><a href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
+                                {% endif %}
+                            </div>
+                    </div>
+                {% endif %}
 			</div>
 		</div>
 	</section>

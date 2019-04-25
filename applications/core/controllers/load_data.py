@@ -192,5 +192,9 @@ data_loader.load_social_media("applications/core/fixtures/fb.csv")
                 instagram = row[5]
                 if fb != "NO":
                     print(enterprise, fb)
+                    enterprise.facebook_url = fb
+                    enterprise.save()
                 if instagram != "NO":
                     print(enterprise, instagram)
+                    enterprise.instagram_url = instagram
+                    enterprise.save()
