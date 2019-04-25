@@ -1,4 +1,9 @@
+import os
+import unicodedata
+
 from django.contrib.auth.models import Group
+from django.core.files import File
+
 
 from applications.core import (
     conf as core_conf,
@@ -139,3 +144,53 @@ data_loader.create_file_with_users_and_passwords("applications/core/fixtures/inf
             output_file.write(f"{line[1]},{username},{password}\n")
 
         output_file.close()
+
+    def load_products(self, product_folder):
+        """
+from applications.core.controllers import load_data
+data_loader = load_data.LoadData()
+data_loader.load_products("../pictures")
+        :param all_data_file:
+        :param product_folder:
+        :return:
+        """
+        for dir in os.listdir(product_folder):
+            dir = unicodedata.normalize('NFC', dir)
+            try:
+                enterprise = core_models.Enterprise.objects.get(name=dir)
+            except core_models.Enterprise.DoesNotExist:
+                print(dir, "Does not exits")
+                enterprise = None
+            if enterprise is not None:
+                for image in os.listdir(os.path.join(product_folder, dir)):
+                    print(enterprise, os.path.join(product_folder, dir, image))
+                    product = core_models.Product(
+                        enterprise=enterprise,
+                        name=image
+                    )
+                    product.picture.save(image, File(open(os.path.join(product_folder, dir, image), "rb")))
+                    product.save()
+
+    def load_social_media(self, fb_data):
+        """
+from applications.core.controllers import load_data
+data_loader = load_data.LoadData()
+data_loader.load_social_media("applications/core/fixtures/fb.csv")
+        :param fb_data:
+        :return:
+        """
+        all_data = core_utils.read_data(fb_data)
+        for row in all_data:
+            enterprise = None
+            enterprise_name = row[1]
+            try:
+                enterprise = core_models.Enterprise.objects.get(name=enterprise_name)
+            except core_models.Enterprise.DoesNotExist:
+                print(enterprise_name, "Does not exits")
+            if enterprise is not None:
+                fb = row[4]
+                instagram = row[5]
+                if fb != "NO":
+                    print(enterprise, fb)
+                if instagram != "NO":
+                    print(enterprise, instagram)
