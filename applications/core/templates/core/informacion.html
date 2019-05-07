@@ -82,17 +82,22 @@
 						<div class="descuentos filter-widget text-center mb-0">
 							<h2 class="fw-title">Descuentos</h2>
                             {% for discount in discounts %}
-                                <a href="{% url discount_qr_code_url discount.slug %}" target="_blank">
 
-                                    <div class="cuadro-descuentos-verde shift_the_nav">
-                                        <br>
-                                        <p>{{ discount.product }}</p>
-                                        <span>
-                                            {% trans "Expires" %} : {{ discount.expires_on|date:"d F Y" }}
-                                        </span>
-                                        <br>
-                                    </div>
-                                </a>
+                                <div class="cuadro-descuentos-verde shift_the_nav">
+                                    <br>
+                                    <p>{{ discount.product }}</p>
+                                        <a href="{% url discount_qr_code_url discount.slug %}" target="_blank">
+                                            <span>
+                                                {% trans "Expires" %} : {{ discount.expires_on|date:"d F Y" }}
+                                            </span>
+                                        </a>
+                                    {% if delete_discount_url %}
+                                    <a href="{% url delete_discount_url enterprise.slug discount.slug %}">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                    {% endif %}
+                                    <br>
+                                </div>
                             {% empty %}
 
                             {% endfor %}
@@ -109,52 +114,52 @@
 						<div class="fw-size-choose">
 						</div>
 					</div>
-					<div class="filter-widget">
-						<h2 class="fw-title text-center">Últimos Post</h2>
-						<div class="row">
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-							<div class="instagram-photo col-6 col-xl-4">
-							<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-								</div>
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-						</div>
-						<div class="filter-widget mb-0">
-								<div class="fw-size-choose">
-								</div>
-							</div>
-						<!--<ul class="category-menu">
-							<li><a href="#">Abercrombie & Fitch <span>(2)</span></a></li>
-							<li><a href="#">Asos<span>(56)</span></a></li>
-							<li><a href="#">Bershka<span>(36)</span></a></li>
-							<li><a href="#">Missguided<span>(27)</span></a></li>
-							<li><a href="#">Zara<span>(19)</span></a></li>
-						</ul>-->
-					</div>
+{#					<div class="filter-widget">#}
+{#						<h2 class="fw-title text-center">Últimos Post</h2>#}
+{#						<div class="row">#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#							<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#								</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="filter-widget mb-0">#}
+{#								<div class="fw-size-choose">#}
+{#								</div>#}
+{#							</div>#}
+{#						<!--<ul class="category-menu">#}
+{#							<li><a href="#">Abercrombie & Fitch <span>(2)</span></a></li>#}
+{#							<li><a href="#">Asos<span>(56)</span></a></li>#}
+{#							<li><a href="#">Bershka<span>(36)</span></a></li>#}
+{#							<li><a href="#">Missguided<span>(27)</span></a></li>#}
+{#							<li><a href="#">Zara<span>(19)</span></a></li>#}
+{#						</ul>-->#}
+{#					</div>#}
 {#					<div class="filter-widget">#}
 {#						<h2 class="fw-title text-center">Ubicación</h2>#}
 {#						<div class="google-maps col-12 col-xl-12 text-left">#}
@@ -203,7 +208,12 @@
                                             {% endif %}
                                             <div class="pi-links">
                                                 <!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-                                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                                {% if change_product_url %}
+                                                    <a href="{% url change_product_url enterprise.slug product.slug %}" class="wishlist-btn"><i class="fa fa-edit"></i></a>
+                                                {% endif %}
+                                                {% if delete_product_url %}
+                                                    <a href="{% url delete_product_url enterprise.slug product.slug %}" class="wishlist-btn"><i class="fa fa-trash"></i></a>
+                                                {% endif %}
                                             </div>
                                         </div>
                                         <!--<div class="pi-text">

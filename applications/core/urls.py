@@ -26,10 +26,15 @@ urlpatterns = [
         enterprise.EntreprenoursFilteredBySubCategory.as_view(),
         name=conf.ENTERPRISE_ENTREPRENOURS_SUBCATEGORY_URL_NAME
     ),
+    # path(
+    #     'informacion',
+    #     TemplateView.as_view(template_name="core/informacion.html")
+    # )
     path(
-        'informacion',
-        TemplateView.as_view(template_name="core/informacion.html")
-    )
+        'mis-empresas',
+        enterprise.MyEnterprises.as_view(),
+        name=conf.ENTERPRISE_MY_ENTERPRISES
+    ),
 ]
 
 from applications.core import urls_slug

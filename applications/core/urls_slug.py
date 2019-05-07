@@ -103,9 +103,24 @@ urlpatterns += [
         name=conf.ENTERPRISE_ADD_PRODUCT_URL_NAME
     ),
     path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/producto/<slug:{conf.PRODUCT_SLUG_URL_KWARG}>',
+        enterprise.UpdateProduct.as_view(),
+        name=conf.ENTERPRISE_UPDATE_PRODUCT_URL_NAME
+    ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/producto/<slug:{conf.PRODUCT_SLUG_URL_KWARG}>/eliminar',
+        enterprise.DeleteProduct.as_view(),
+        name=conf.ENTERPRISE_DELETE_PRODUCT_URL_NAME
+    ),
+    path(
         f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/agregar-descuento/',
         enterprise.AddDiscount.as_view(),
         name=conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME
+    ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/descuento/<slug:{conf.DISCOUNTS_SLUG_URL_KWARG}>/eliminar',
+        enterprise.DeleteDiscount.as_view(),
+        name=conf.ENTERPRISE_DELETE_DISCOUNT_URL_NAME
     ),
     path(
         f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/agregar-mensaje/',

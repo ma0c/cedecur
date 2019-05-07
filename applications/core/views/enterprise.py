@@ -113,11 +113,20 @@ class Detail(
                 kwargs=self.kwargs_for_reverse_url()
             )
 
+        if self.request.user.has_perm("core.change_product") and self.get_object().owner == self.request.user:
+            context['change_product_url'] = conf.ENTERPRISE_UPDATE_PRODUCT_URL_NAME
+
+        if self.request.user.has_perm("core.delete_product") and self.get_object().owner == self.request.user:
+            context['delete_product_url'] = conf.ENTERPRISE_DELETE_PRODUCT_URL_NAME
+
         if self.request.user.has_perm("core.add_discounts") and self.get_object().owner == self.request.user:
             context['add_discount_reversed_url'] = reverse_lazy(
                 conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME,
                 kwargs=self.kwargs_for_reverse_url()
             )
+
+        if self.request.user.has_perm("core.delete_discounts") and self.get_object().owner == self.request.user:
+            context['delete_discount_url'] = conf.ENTERPRISE_DELETE_DISCOUNT_URL_NAME
 
         context["add_contact_reversed_url"] = reverse_lazy(
             conf.ENTERPRISE_ADD_CONTACT_URL_NAME,
@@ -137,7 +146,6 @@ class Update(
     Update a Enterprise
     """
     model = models.Enterprise
-    form_class = forms.Enterprise
     permission_required = (
         'core.change_enterprise'
     )
@@ -145,6 +153,11 @@ class Update(
 
     def __init__(self):
         super(Update, self).__init__()
+
+    def get_form_class(self):
+        if self.request.user.is_staff:
+            return forms.Enterprise
+        return forms.EnterpriseForOwners
 
     def get_success_url(self):
         return reverse_lazy(conf.ENTERPRISE_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
@@ -174,7 +187,7 @@ class Delete(
 
 class Entreprenours(base_views.BaseListView):
     template_name = "core/perfiles.html"
-    queryset = models.Enterprise.objects.all()
+    queryset = models.Enterprise.objects.filter(active=True)
     context_object_name = "enterprises"
 
 
@@ -219,6 +232,43 @@ class AddProduct(
         )
 
 
+class UpdateProduct(
+    mixins.EnterpriseMixin,
+    mixins.ProductMixin,
+    mixins.OwnershipProductMixin,
+    product.Update
+):
+    form_class = forms.ProductNoEnterprise
+    slug_url_kwarg = conf.PRODUCT_SLUG_URL_KWARG
+    template_name = "core/product/update.html"
+    context_object_name = "product"
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
+class DeleteProduct(
+    mixins.EnterpriseMixin,
+    mixins.ProductMixin,
+    mixins.OwnershipProductMixin,
+    product.Delete
+):
+    slug_url_kwarg = conf.PRODUCT_SLUG_URL_KWARG
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
 class AddDiscount(
     mixins.EnterpriseMixin,
     mixins.OwnershipEnterpriseMixin,
@@ -231,6 +281,23 @@ class AddDiscount(
         form = super().get_form(form_class)
         form.fields["product"].queryset = models.Product.objects.filter(enterprise=self.get_enterprise())
         return form
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
+class DeleteDiscount(
+    mixins.EnterpriseMixin,
+    mixins.DiscountMixin,
+    mixins.OwnershipDiscountMixin,
+    discounts.Delete
+):
+    slug_url_kwarg = conf.DISCOUNTS_SLUG_URL_KWARG
 
     def get_success_url(self):
         return reverse_lazy(
@@ -266,3 +333,18 @@ class AddContact(
                 conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
             }
         )
+
+
+class MyEnterprises(
+    LoginRequiredMixin,
+    PermissionRequiredMixin,
+    base_views.BaseListView
+):
+    permission_required = (
+        'core.change_enterprise'
+    )
+    template_name = "core/perfiles.html"
+    context_object_name = "enterprises"
+
+    def get_queryset(self):
+        return models.Enterprise.objects.filter(owner=self.request.user)

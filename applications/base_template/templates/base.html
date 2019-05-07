@@ -57,7 +57,7 @@
 					</div>
 					<div class="row align-items-center">
 						<div class="col-10 col-sm-4">
-							<a class="navbar-brand" href="index.html">
+							<a class="navbar-brand" href="/">
 								<img src="{% static 'img/Normal.png' %}" alt="">
 							</a>
 						</div>
@@ -87,6 +87,26 @@
 								<li class="nav-item">
 									<a class="nav-link {% if  "/empresa" in path %} active {% endif %}" href="/empresarios">Empresarios</a>
 								</li>
+                                {% if user.is_authenticated %}
+                                    {% if enterprise_manager_url %}
+                                        <li>
+                                            <a href="{% url enterprise_manager_url  %}"  class="nav-link">
+                                                Mis empresas
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    <li>
+                                        <a href="{{ log_out_url }}" class="nav-link">
+                                            Cerrar Sesión
+                                        </a>
+                                    </li>
+                                {% else %}
+                                    <li>
+                                        <a href="{{ log_in_url }}" class="nav-link">
+                                            Iniciar Sesión
+                                        </a>
+                                    </li>
+                                {% endif %}
 								<!--<li class="nav-item">
 									<a class="nav-link" href="../cedecur/contacto.html">Contacto</a>
 								</li>
@@ -136,7 +156,7 @@
 		<div class="container-fluid">
 			<div class="row align-items-center">
 				<div class="footer-logo text-center col-xl-3 col-sm-4 col-4">
-					<a href="index.html"><img src="{% static 'img/Verde.png' %}" alt=""></a>
+					<a href="/"><img src="{% static 'img/Verde.png' %}" alt=""></a>
 				</div>
 				<div class="col-xl-8 col-sm-7 col-6">
 					<div class="row">
@@ -147,7 +167,7 @@
 							<a href="https://www.youtube.com/channel/UCXi5p7aqWt5y8VXkxIFFJOw" class="youtube"><i class="fa fa-youtube"></i></a>
 						</div>
 						<div class="col-xl-12 col-sm-12 col-12"	>
-								<p class="text-white text-right mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> <br>All rights reserved | <a href="index.html" target="_blank">CEDECUR</a></p>
+								<p class="text-white text-right mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> <br>All rights reserved | <a href="/" target="_blank">CEDECUR</a></p>
 						</div>
 					</div>
 				</div>

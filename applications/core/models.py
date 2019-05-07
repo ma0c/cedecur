@@ -51,10 +51,10 @@ class Enterprise(base_models.FullSlugBaseModel):
 
 class Product(base_models.FullSlugBaseModel):
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
-    picture = models.FileField()
+    picture = models.FileField(blank=True)
 
     def __str__(self):
-        return f"{self.id} {self.enterprise}"
+        return f"{self.id} {self.name} {self.enterprise}"
 
     class Meta:
         verbose_name = core_conf.PRODUCT_VERBOSE_NAME
