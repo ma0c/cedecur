@@ -127,6 +127,11 @@ urlpatterns += [
         enterprise.AddContact.as_view(),
         name=conf.ENTERPRISE_ADD_CONTACT_URL_NAME
     ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/mensajes/',
+        enterprise.ListContact.as_view(),
+        name=conf.ENTERPRISE_LIST_CONTACT_URL_NAME
+    ),
 ]
 
 # from .views import product

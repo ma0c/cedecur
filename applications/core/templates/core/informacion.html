@@ -242,6 +242,11 @@
 									<button class="site-btn">ENVIAR</button>
 								</form>
 								</div>
+                        {% if list_contact_url_reversed %}
+                            <a href="{{ list_contact_url_reversed }}">
+                            <button>{% trans "See messages" %}</button>
+                            </a>
+                        {% endif %}
 
 					</div>
 				</div>

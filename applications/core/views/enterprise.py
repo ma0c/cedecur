@@ -128,6 +128,12 @@ class Detail(
         if self.request.user.has_perm("core.delete_discounts") and self.get_object().owner == self.request.user:
             context['delete_discount_url'] = conf.ENTERPRISE_DELETE_DISCOUNT_URL_NAME
 
+        if self.get_object().owner == self.request.user:
+            context['list_contact_url_reversed'] = reverse_lazy(
+                conf.ENTERPRISE_LIST_CONTACT_URL_NAME,
+                kwargs=self.kwargs_for_reverse_url()
+            )
+
         context["add_contact_reversed_url"] = reverse_lazy(
             conf.ENTERPRISE_ADD_CONTACT_URL_NAME,
             kwargs=self.kwargs_for_reverse_url()
@@ -333,6 +339,15 @@ class AddContact(
                 conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
             }
         )
+
+
+class ListContact(
+    mixins.EnterpriseMixin,
+    mixins.OwnershipEnterpriseMixin,
+    contact.List
+):
+    slug_url_kwarg = conf.ENTERPRISE_SLUG_URL_KWARG
+    template_name = "core/contact/list.html"
 
 
 class MyEnterprises(

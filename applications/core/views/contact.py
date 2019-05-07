@@ -37,7 +37,7 @@ class List(LoginRequiredMixin, base_views.BaseListView):
         return context
 
 
-class Create(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseCreateView):
+class Create(base_views.BaseCreateView):
     """
     Create a Contact
     """
