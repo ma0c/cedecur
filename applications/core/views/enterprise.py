@@ -5,6 +5,7 @@ except ImportError:
     from django.urls import reverse_lazy
 from django import http
 from django.utils import timezone
+from django.contrib import messages
 
 
 from base import views as base_views
@@ -20,7 +21,8 @@ from applications.core import (
 
 from applications.core.views import (
     product,
-    discounts
+    discounts,
+    contact
 )
 
 
@@ -111,12 +113,31 @@ class Detail(
                 kwargs=self.kwargs_for_reverse_url()
             )
 
-        print(self.request.user.has_perm("core.add_discounts"))
+        if self.request.user.has_perm("core.change_product") and self.get_object().owner == self.request.user:
+            context['change_product_url'] = conf.ENTERPRISE_UPDATE_PRODUCT_URL_NAME
+
+        if self.request.user.has_perm("core.delete_product") and self.get_object().owner == self.request.user:
+            context['delete_product_url'] = conf.ENTERPRISE_DELETE_PRODUCT_URL_NAME
+
         if self.request.user.has_perm("core.add_discounts") and self.get_object().owner == self.request.user:
             context['add_discount_reversed_url'] = reverse_lazy(
                 conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME,
                 kwargs=self.kwargs_for_reverse_url()
             )
+
+        if self.request.user.has_perm("core.delete_discounts") and self.get_object().owner == self.request.user:
+            context['delete_discount_url'] = conf.ENTERPRISE_DELETE_DISCOUNT_URL_NAME
+
+        if self.get_object().owner == self.request.user:
+            context['list_contact_url_reversed'] = reverse_lazy(
+                conf.ENTERPRISE_LIST_CONTACT_URL_NAME,
+                kwargs=self.kwargs_for_reverse_url()
+            )
+
+        context["add_contact_reversed_url"] = reverse_lazy(
+            conf.ENTERPRISE_ADD_CONTACT_URL_NAME,
+            kwargs=self.kwargs_for_reverse_url()
+        )
 
         return context
 
@@ -131,7 +152,6 @@ class Update(
     Update a Enterprise
     """
     model = models.Enterprise
-    form_class = forms.Enterprise
     permission_required = (
         'core.change_enterprise'
     )
@@ -139,6 +159,11 @@ class Update(
 
     def __init__(self):
         super(Update, self).__init__()
+
+    def get_form_class(self):
+        if self.request.user.is_staff:
+            return forms.Enterprise
+        return forms.EnterpriseForOwners
 
     def get_success_url(self):
         return reverse_lazy(conf.ENTERPRISE_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
@@ -168,7 +193,7 @@ class Delete(
 
 class Entreprenours(base_views.BaseListView):
     template_name = "core/perfiles.html"
-    queryset = models.Enterprise.objects.all()
+    queryset = models.Enterprise.objects.filter(active=True)
     context_object_name = "enterprises"
 
 
@@ -213,6 +238,43 @@ class AddProduct(
         )
 
 
+class UpdateProduct(
+    mixins.EnterpriseMixin,
+    mixins.ProductMixin,
+    mixins.OwnershipProductMixin,
+    product.Update
+):
+    form_class = forms.ProductNoEnterprise
+    slug_url_kwarg = conf.PRODUCT_SLUG_URL_KWARG
+    template_name = "core/product/update.html"
+    context_object_name = "product"
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
+class DeleteProduct(
+    mixins.EnterpriseMixin,
+    mixins.ProductMixin,
+    mixins.OwnershipProductMixin,
+    product.Delete
+):
+    slug_url_kwarg = conf.PRODUCT_SLUG_URL_KWARG
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
 class AddDiscount(
     mixins.EnterpriseMixin,
     mixins.OwnershipEnterpriseMixin,
@@ -233,3 +295,71 @@ class AddDiscount(
                 conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
             }
         )
+
+
+class DeleteDiscount(
+    mixins.EnterpriseMixin,
+    mixins.DiscountMixin,
+    mixins.OwnershipDiscountMixin,
+    discounts.Delete
+):
+    slug_url_kwarg = conf.DISCOUNTS_SLUG_URL_KWARG
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
+class AddContact(
+    mixins.EnterpriseMixin,
+    contact.Create
+):
+    form_class = forms.Contact
+    slug_url_kwarg = conf.ENTERPRISE_SLUG_URL_KWARG
+
+    def form_valid(self, form):
+        contact = form.save(commit=False)
+        contact.enterprise = self.get_enterprise()
+        contact.save()
+        messages.add_message(
+            self.request,
+            messages.INFO,
+            conf.MESSAGE_POSTED_SUCCESSFULLY
+        )
+        return http.HttpResponseRedirect(self.get_success_url())
+
+    def get_success_url(self):
+        return reverse_lazy(
+            conf.ENTERPRISE_DETAIL_URL_NAME,
+            kwargs={
+                conf.ENTERPRISE_SLUG_URL_KWARG: self.get_enterprise().slug
+            }
+        )
+
+
+class ListContact(
+    mixins.EnterpriseMixin,
+    mixins.OwnershipEnterpriseMixin,
+    contact.List
+):
+    slug_url_kwarg = conf.ENTERPRISE_SLUG_URL_KWARG
+    template_name = "core/contact/list.html"
+
+
+class MyEnterprises(
+    LoginRequiredMixin,
+    PermissionRequiredMixin,
+    base_views.BaseListView
+):
+    permission_required = (
+        'core.change_enterprise'
+    )
+    template_name = "core/perfiles.html"
+    context_object_name = "enterprises"
+
+    def get_queryset(self):
+        return models.Enterprise.objects.filter(owner=self.request.user)

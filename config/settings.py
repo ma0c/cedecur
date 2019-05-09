@@ -70,6 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'base.context_processors.site_name',
+                'applications.authentication.context_processors.authentication_urls',
                 'applications.core.context_processors.categories',
                 'applications.core.context_processors.enterprise'
             ],

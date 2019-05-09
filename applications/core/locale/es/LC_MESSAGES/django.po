@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-04-24 23:08-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: conf.py:5
+msgid "Enterprise Manager"
+msgstr "Manejador de empresa"
+
+#: conf.py:30
+msgid "User created: {}"
+msgstr "Usuario creado: {}"
+
+#: conf.py:31
+msgid "User  already created: {}"
+msgstr "Usuario previamente creado: {}"
+
+#: conf.py:36 conf.py:37
+msgid "Category"
+msgstr "Categoría"
+
+#: conf.py:45
+msgid "Category created: {}"
+msgstr "Categoría creada: {}"
+
+#: conf.py:46
+msgid "Category already created: {}"
+msgstr "Categoría ya creada: {}"
+
+#: conf.py:50 conf.py:51
+msgid "Subcategory"
+msgstr "Subcategoría"
+
+#: conf.py:59 conf.py:80
+msgid "Subcategory created: {}"
+msgstr "Subcategoría creada: {}"
+
+#: conf.py:60 conf.py:81
+msgid "Subcategory  already created: {}"
+msgstr "Subcategoría ya creada: {}"
+
+#: conf.py:64 conf.py:65
+msgid "Enterprise"
+msgstr "Empresa"
+
+#: conf.py:86 conf.py:87
+msgid "Product"
+msgstr "Producto"
+
+#: conf.py:96 conf.py:97
+msgid "Discounts"
+msgstr "Descuentos"
+
+#: conf.py:108 conf.py:109
+msgid "Contact"
+msgstr "Contacto"
+
+#: conf.py:117
+msgid "Message posted successfully"
+msgstr "Mensaje enviado exitosamente"
+
+#: templates/core/discounts/qr_code.html:13
+msgid "Discount for "
+msgstr "Descuento para "
+
+#: templates/core/discounts/qr_code.html:16
+msgid "Valid until"
+msgstr "Válido hasta"
+
+#: templates/core/informacion.html:75
+msgid "Update"
+msgstr "Actualizar"
+
+#: templates/core/informacion.html:91
+msgid "Expires"
+msgstr "Se vence "
+
+#: templates/core/informacion.html:102
+msgid "Add Discount"
+msgstr "Agregar descuento"
+
+#: templates/core/informacion.html:216
+msgid "There are not products available"
+msgstr "No hay productos disponibles"
+
+#: templates/core/informacion.html:221
+msgid "Add product"
+msgstr "Agregar producto"

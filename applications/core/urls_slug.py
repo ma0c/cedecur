@@ -103,9 +103,34 @@ urlpatterns += [
         name=conf.ENTERPRISE_ADD_PRODUCT_URL_NAME
     ),
     path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/producto/<slug:{conf.PRODUCT_SLUG_URL_KWARG}>',
+        enterprise.UpdateProduct.as_view(),
+        name=conf.ENTERPRISE_UPDATE_PRODUCT_URL_NAME
+    ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/producto/<slug:{conf.PRODUCT_SLUG_URL_KWARG}>/eliminar',
+        enterprise.DeleteProduct.as_view(),
+        name=conf.ENTERPRISE_DELETE_PRODUCT_URL_NAME
+    ),
+    path(
         f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/agregar-descuento/',
         enterprise.AddDiscount.as_view(),
         name=conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME
+    ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/descuento/<slug:{conf.DISCOUNTS_SLUG_URL_KWARG}>/eliminar',
+        enterprise.DeleteDiscount.as_view(),
+        name=conf.ENTERPRISE_DELETE_DISCOUNT_URL_NAME
+    ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/agregar-mensaje/',
+        enterprise.AddContact.as_view(),
+        name=conf.ENTERPRISE_ADD_CONTACT_URL_NAME
+    ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/mensajes/',
+        enterprise.ListContact.as_view(),
+        name=conf.ENTERPRISE_LIST_CONTACT_URL_NAME
     ),
 ]
 
@@ -175,4 +200,35 @@ urlpatterns += [
         name=conf.DISCOUNTS_QR_CODE_URL_NAME
     ),
 ]
+
+# from .views import contact
+#
+# urlpatterns += [
+#     # contact
+#     path(
+#         'contact/',
+#         contact.List.as_view(),
+#         name=conf.CONTACT_LIST_URL_NAME
+#     ),
+#     path(
+#         'contact/create/',
+#         contact.Create.as_view(),
+#         name=conf.CONTACT_CREATE_URL_NAME
+#     ),
+#     path(
+#         'contact/<slug:slug>/',
+#         contact.Detail.as_view(),
+#         name=conf.CONTACT_DETAIL_URL_NAME
+#     ),
+#     path(
+#         'contact/<slug:slug>/update/',
+#         contact.Update.as_view(),
+#         name=conf.CONTACT_UPDATE_URL_NAME
+#     ),
+#     path(
+#         'contact/<slug:slug>/delete/',
+#         contact.Delete.as_view(),
+#         name=conf.CONTACT_DELETE_URL_NAME
+#     ),
+# ]
 

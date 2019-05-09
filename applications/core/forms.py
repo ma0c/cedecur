@@ -13,6 +13,7 @@ class Category(forms.ModelForm):
         fields = '__all__'
         widgets = generate_bootstrap_widgets_for_all_fields(models.Category)
 
+
 class Subcategory(forms.ModelForm):
     class Meta:
         model = models.Subcategory
@@ -26,6 +27,19 @@ class Enterprise(forms.ModelForm):
         fields = '__all__'
         widgets = generate_bootstrap_widgets_for_all_fields(models.Enterprise)
 
+
+class EnterpriseForOwners(Enterprise):
+    class Meta(Enterprise.Meta):
+        exclude = [
+            "slug",
+            "active",
+            "owner",
+            "category",
+            "sub_category",
+            "latitude",
+            "longitude"
+
+        ]
 
 class Product(forms.ModelForm):
     class Meta:
@@ -57,3 +71,16 @@ class DiscountsMinimal(Discounts):
             "description",
             "expires_on"
         ]
+
+
+class Contact(forms.ModelForm):
+    class Meta:
+        model = models.Contact
+        fields = [
+            "name",
+            "email",
+            "title",
+            "description"
+        ]
+        widgets = generate_bootstrap_widgets_for_all_fields(models.Contact)
+

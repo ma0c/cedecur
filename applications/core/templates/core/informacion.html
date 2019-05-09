@@ -82,17 +82,22 @@
 						<div class="descuentos filter-widget text-center mb-0">
 							<h2 class="fw-title">Descuentos</h2>
                             {% for discount in discounts %}
-                                <a href="{% url discount_qr_code_url discount.slug %}" target="_blank">
 
-                                    <div class="cuadro-descuentos-verde shift_the_nav">
-                                        <br>
-                                        <p>{{ discount.product }}</p>
-                                        <span>
-                                            {% trans "Expires" %} : {{ discount.expires_on|date:"d F Y" }}
-                                        </span>
-                                        <br>
-                                    </div>
-                                </a>
+                                <div class="cuadro-descuentos-verde shift_the_nav">
+                                    <br>
+                                    <p>{{ discount.product }}</p>
+                                        <a href="{% url discount_qr_code_url discount.slug %}" target="_blank">
+                                            <span>
+                                                {% trans "Expires" %} : {{ discount.expires_on|date:"d F Y" }}
+                                            </span>
+                                        </a>
+                                    {% if delete_discount_url %}
+                                    <a href="{% url delete_discount_url enterprise.slug discount.slug %}">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                    {% endif %}
+                                    <br>
+                                </div>
                             {% empty %}
 
                             {% endfor %}
@@ -109,58 +114,58 @@
 						<div class="fw-size-choose">
 						</div>
 					</div>
-					<div class="filter-widget">
-						<h2 class="fw-title text-center">Últimos Post</h2>
-						<div class="row">
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-							<div class="instagram-photo col-6 col-xl-4">
-							<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-								</div>
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-							<div class="instagram-photo col-6 col-xl-4">
-								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">
-								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">
-								</a>
-							</div>
-						</div>
-						<div class="filter-widget mb-0">
-								<div class="fw-size-choose">
-								</div>
-							</div>
-						<!--<ul class="category-menu">
-							<li><a href="#">Abercrombie & Fitch <span>(2)</span></a></li>
-							<li><a href="#">Asos<span>(56)</span></a></li>
-							<li><a href="#">Bershka<span>(36)</span></a></li>
-							<li><a href="#">Missguided<span>(27)</span></a></li>
-							<li><a href="#">Zara<span>(19)</span></a></li>
-						</ul>-->
-					</div>
-					<div class="filter-widget">
-						<h2 class="fw-title text-center">Ubicación</h2>
-						<div class="google-maps col-12 col-xl-12 text-left">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127450.10983615229!2d-76.59570455903695!3d3.3950618692137358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6f0cc4bb3f1%3A0x1f0fb5e952ae6168!2sCali%2C+Valle+del+Cauca!5e0!3m2!1ses!2sco!4v1550789893379" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-						</div>
-						</div>
+{#					<div class="filter-widget">#}
+{#						<h2 class="fw-title text-center">Últimos Post</h2>#}
+{#						<div class="row">#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#							<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#								</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#							<div class="instagram-photo col-6 col-xl-4">#}
+{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
+{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
+{#								</a>#}
+{#							</div>#}
+{#						</div>#}
+{#						<div class="filter-widget mb-0">#}
+{#								<div class="fw-size-choose">#}
+{#								</div>#}
+{#							</div>#}
+{#						<!--<ul class="category-menu">#}
+{#							<li><a href="#">Abercrombie & Fitch <span>(2)</span></a></li>#}
+{#							<li><a href="#">Asos<span>(56)</span></a></li>#}
+{#							<li><a href="#">Bershka<span>(36)</span></a></li>#}
+{#							<li><a href="#">Missguided<span>(27)</span></a></li>#}
+{#							<li><a href="#">Zara<span>(19)</span></a></li>#}
+{#						</ul>-->#}
+{#					</div>#}
+{#					<div class="filter-widget">#}
+{#						<h2 class="fw-title text-center">Ubicación</h2>#}
+{#						<div class="google-maps col-12 col-xl-12 text-left">#}
+{#							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127450.10983615229!2d-76.59570455903695!3d3.3950618692137358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6f0cc4bb3f1%3A0x1f0fb5e952ae6168!2sCali%2C+Valle+del+Cauca!5e0!3m2!1ses!2sco!4v1550789893379" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>#}
+{#						</div>#}
+{#                    </div>#}
 				</div>
 
 				<div class="col-12 col-lg-8  order-2 order-lg-2 mb-5 mb-lg-0">
@@ -203,7 +208,12 @@
                                             {% endif %}
                                             <div class="pi-links">
                                                 <!--<a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>-->
-                                                <a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+                                                {% if change_product_url %}
+                                                    <a href="{% url change_product_url enterprise.slug product.slug %}" class="wishlist-btn"><i class="fa fa-edit"></i></a>
+                                                {% endif %}
+                                                {% if delete_product_url %}
+                                                    <a href="{% url delete_product_url enterprise.slug product.slug %}" class="wishlist-btn"><i class="fa fa-trash"></i></a>
+                                                {% endif %}
                                             </div>
                                         </div>
                                         <!--<div class="pi-text">
@@ -223,25 +233,38 @@
                         </div>
                     {% endif %}
 						<div class="col-12 col-xl-12 contact-info">
-								<form class="contact-form text-center">
-									<input type="text" placeholder="Nombre">
-									<input type="text" placeholder="E-mail">
-									<input type="text" placeholder="Titulo">
-									<p><textarea placeholder="Mensaje"></textarea></p>
+								<form class="contact-form text-center" method="POST" action="{{ add_contact_reversed_url }}">
+                                    {% csrf_token %}
+									<input type="text" placeholder="Nombre" name="name">
+									<input type="text" placeholder="E-mail" name="email">
+									<input type="text" placeholder="Titulo" name="title">
+									<p><textarea placeholder="Mensaje" name="description"></textarea></p>
 									<button class="site-btn">ENVIAR</button>
 								</form>
 								</div>
+                        {% if list_contact_url_reversed %}
+                            <a href="{{ list_contact_url_reversed }}">
+                            <button>{% trans "See messages" %}</button>
+                            </a>
+                        {% endif %}
 
 					</div>
 				</div>
-				<div class="col-1 col-lg-1 order-3 order-lg-3 text-center d-none d-sm-block">
-						<div class="social-box contact-social social-links shift_the_nav">
-							
-							<p><a href="{{ enterprise.facebook_url|default:"#" }}"><i class="fa fa-facebook"></i></a></p>
-							<p><a href="{{ enterprise.twitter_url|default:"#" }}"><i class="fa fa-twitter"></i></a></p>
-							<p><a href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
-						</div>
-				</div>
+                {% if enterprise.facebook_url or enterprise.twitter_url or enterprise.youtube_url %}
+                    <div class="col-1 col-lg-1 order-3 order-lg-3 text-center d-none d-sm-block">
+                            <div class="social-box contact-social social-links shift_the_nav">
+                                {% if enterprise.facebook_url %}
+                                    <p><a href="{{ enterprise.facebook_url|default:"#" }}"><i class="fa fa-facebook"></i></a></p>
+                                {% endif %}
+                                {% if enterprise.twitter_url %}
+                                    <p><a href="{{ enterprise.twitter_url|default:"#" }}"><i class="fa fa-twitter"></i></a></p>
+                                {% endif %}
+                                {% if enterprise.youtube_url %}
+                                    <p><a href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
+                                {% endif %}
+                            </div>
+                    </div>
+                {% endif %}
 			</div>
 		</div>
 	</section>

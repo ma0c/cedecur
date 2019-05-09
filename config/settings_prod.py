@@ -6,11 +6,12 @@ ALLOWED_HOSTS = [
     # Allowed domains for env
     "142.93.22.249",
     "seletienecali.com",
-    "www.seletienecali.com"
+    "www.seletienecali.com",
+    "app.seletienecali.com",
 ]
 
 
-PREPEND_WWW = True
+PREPEND_WWW = False
 DATABASE_NAME = os.environ.get("CONFIG_DATABASE_DATABASE", "")
 DATABASE_USERNAME = os.environ.get("CONFIG_DATABASE_USERNAME", "")
 DATABASE_PASSWORD = os.environ.get("CONFIG_DATABASE_PASSWORD", "")

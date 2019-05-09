@@ -13,6 +13,13 @@ def categories(request):
 
 
 def enterprise(request):
-    return {
-        "enterprise_detail_url": core_conf.ENTERPRISE_DETAIL_URL_NAME
+    links = {
+        "enterprise_detail_url": core_conf.ENTERPRISE_DETAIL_URL_NAME,
     }
+
+    if request.user.is_authenticated:
+        print(request.user.groups)
+        if request.user.groups.all().filter(name=core_conf.ENTERPRISE_MANAGER_GROUP_NAME):
+            links["enterprise_manager_url"] = core_conf.ENTERPRISE_MY_ENTERPRISES
+
+    return links
