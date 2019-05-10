@@ -14,7 +14,7 @@ class OwnershipEnterpriseMixin(object):
             print("Permission granted")
             return super().dispatch(request, *args,  **kwargs)
         print("Permission NOT granted")
-        return http.HttpResponseForbidden(get_template("403.html").render())
+        return http.HttpResponseForbidden(get_template("errors/403.html").render())
 
 
 class OwnershipProductMixin(object):
@@ -26,7 +26,7 @@ class OwnershipProductMixin(object):
 
             return super().dispatch(request, *args,  **kwargs)
         print("Permission NOT granted")
-        return http.HttpResponseForbidden(get_template("403.html").render())
+        return http.HttpResponseForbidden(get_template("errors/403.html").render())
 
 
 class OwnershipDiscountMixin(object):
@@ -37,7 +37,7 @@ class OwnershipDiscountMixin(object):
                 self.get_enterprise() == self.get_discount().product.enterprise:
 
             return super().dispatch(request, *args,  **kwargs)
-        return http.HttpResponseForbidden(get_template("403.html").render())
+        return http.HttpResponseForbidden(get_template("errors/403.html").render())
 
 
 class EnterpriseMixin(object):
