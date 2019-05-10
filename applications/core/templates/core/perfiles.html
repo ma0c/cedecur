@@ -21,6 +21,16 @@
 	<section class="category-section spad">
 		<div class="container">
 			<div class="row">
+				<div class=" col-12 col-sm-12 col-lg-12 spad">
+					<nav class="navbar navbar-expand-lg navbar-light">
+					  <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+					    <form class="form-inline my-2 my-lg-0" action="{% url search_filter_url_name %}">
+					      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Buscar por Nombre" aria-label="Search">
+					      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src="img/lupa.webp" alt="" style="max-width: 35px;"></button>
+					    </form>
+					  </div>
+					</nav>
+				</div>
                 <div class=" col-12 col-lg-2">
                         <div class="filter-widget">
                                 <h2 class="fw-title">Categorias</h2>

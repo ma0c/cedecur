@@ -26,6 +26,11 @@ urlpatterns = [
         enterprise.EntreprenoursFilteredBySubCategory.as_view(),
         name=conf.ENTERPRISE_ENTREPRENOURS_SUBCATEGORY_URL_NAME
     ),
+    path(
+        'empresarios/buscar/',
+        enterprise.EntreprenoursFilteredBySearch.as_view(),
+        name=conf.ENTERPRISE_ENTREPRENOURS_SEARCH_URL_NAME
+    ),
     # path(
     #     'informacion',
     #     TemplateView.as_view(template_name="core/informacion.html")

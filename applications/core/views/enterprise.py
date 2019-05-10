@@ -6,7 +6,7 @@ except ImportError:
 from django import http
 from django.utils import timezone
 from django.contrib import messages
-
+from django.db.models import Q
 
 from base import views as base_views
 
@@ -214,6 +214,16 @@ class EntreprenoursFilteredBySubCategory(Entreprenours):
 
     def get_queryset(self):
         return models.Enterprise.objects.filter(sub_category=self.get_subcategory())
+
+
+class EntreprenoursFilteredBySearch(Entreprenours):
+
+    def get_queryset(self):
+        query_parameter = self.request.GET.get("search", "")
+        return models.Enterprise.objects.filter(
+            Q(name__icontains=query_parameter) |
+            Q(description=query_parameter)
+        )
 
 
 class AddProduct(
