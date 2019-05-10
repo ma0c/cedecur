@@ -1,11 +1,13 @@
 p {
+	font-family: 'Karla', sans-serif;
 	font-size: 14px;
 	color: #fff;
 	line-height: 1.6;
 }
 
 p1 {
-	font-size: 14px;
+	font-family: 'Karla', sans-serif;
+	font-size: 16px;
 	color: #585858;
 	line-height: 1.6;
 }
@@ -15,38 +17,58 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+h7 {
 	margin: 0;
 	color: #111111;
 	font-weight: 600;
 }
 
 h1 {
-	color:#fff;
-	font-size: 70px;
+	font-family: 'Anton', sans-serif;
+	color:#000;
+	font-size: 45px;
+	letter-spacing: 2pt;
 }
 
 h2 {
-	font-size: 36px;
+	font-family: 'Karla', sans-serif;
+	font-size: 90px;
 }
 
 h3 {
+	font-family: 'Karla', sans-serif;
 	font-size: 30px;
 }
 
-h4 {	
+h4 {
+	font-family: 'Anton', sans-serif;	
 	color:#fff;	
 	font-size: 24px;
 	text-transform: uppercase;
+	letter-spacing: 2pt;
 }
 
 h5 {
+	font-family: 'Anton', sans-serif;
 	font-size: 18px;
+	letter-spacing: 2pt;
 }
 
 h6 {
+	font-family: 'Karla', sans-serif;
 	font-size: 16px;
+}
 
+h7 {
+	font-family: 'Karla', sans-serif;
+	font-size: 18px;
+}
+h8 {
+	font-family: 'Anton', sans-serif;	
+	color:#000;	
+	font-size: 26px;
+	text-transform: uppercase;
 }
 
 /* Preloder */
