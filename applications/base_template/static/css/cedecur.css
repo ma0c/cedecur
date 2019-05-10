@@ -201,6 +201,13 @@ li.active{
 	margin-bottom: 100px;
 }
 
+.padding{
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
 .filter-widget .fw-title {
 	font-size: 18px;
 	font-weight: 800;
