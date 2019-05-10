@@ -56,8 +56,8 @@
                     </div>
                     {% if user.is_authenticated %}
                         <div class="col-1 col-sm-1 col-xl-1">
-                            <a href="{{ log_out_url }}">
 
+                            <a href="{{ log_out_url }}">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='width:160px; height:35px'>
                                     Cerrar Sesión
                                 </button>
@@ -74,7 +74,7 @@
                     {% endif %}
                 </div>
                 <div class="row align-items-center">
-                    <div class="col-10 col-sm-4">
+                    <div class="col-9 col-sm-3 col-xl-3">
                         <a class="navbar-brand" href="/">
                             <img src="{% static 'img/Logo-Curvas.png' %}" alt="">
                         </a>
@@ -96,63 +96,44 @@
                             </button>
                         </div>
                     </div>
-                </div>
-                <div class="col-1 col-sm-2 col-xl-2 collapse navbar-collapse justify-content-between" id="menuPrincipal">
-                    <ul class="navbar-nav">
-                        <li class="nav-item {% if path ==  "/"%} active {% endif %}">
-                            <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {% if  "/empresa" in path %} active {% endif %}" href="/empresarios">Empresarios</a>
-                        </li>
-                        {% if user.is_authenticated %}
-                            {% if enterprise_manager_url %}
-                                <li>
-                                    <a href="{% url enterprise_manager_url  %}"  class="nav-link">
-                                        Mis empresas
-                                    </a>
-                                </li>
+                    <div class="col-1 col-sm-2 col-xl-2 collapse navbar-collapse justify-content-between" id="menuPrincipal">
+                        <ul class="navbar-nav">
+                            <li class="nav-item {% if path ==  "/"%} active {% endif %}">
+                                <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {% if  "/empresa" in path %} active {% endif %}" href="/empresarios">Empresarios</a>
+                            </li>
+                            {% if user.is_authenticated %}
+                                {% if enterprise_manager_url %}
+                                    <li>
+                                        <a href="{% url enterprise_manager_url  %}"  class="nav-link">
+                                            Mis empresas
+                                        </a>
+                                    </li>
+                                {% endif %}
                             {% endif %}
-                        {% endif %}
-                        <!--<li class="nav-item">
-                            <a class="nav-link" href="../cedecur/contacto.html">Contacto</a>
-                        </li>
-                        li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
+                        </ul>
+                    </div>
+                    {% if user.is_authenticated %}
+                        <div class="col-1 col-sm-1 col-xl-1 d-none d-lg-block">
+                            <a href="{{ log_out_url }}">
+
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='width:160px; height:35px'>
+                                    Cerrar Sesión
+                                </button>
                             </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                        </li-->
-                    </ul>
-
+                        </div>
+                    {% else %}
+                        <div class="col-1 col-sm-1 col-xl-1y no d-none d-lg-block">
+                            <a href="{{ log_in_url }}">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='width:160px; height:35px'>
+                                    Iniciar Sesión
+                                </button>
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
-                {% if user.is_authenticated %}
-                    <div class="col-1 col-sm-1 col-xl-1">
-                        <a href="{{ log_out_url }}">
-
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='width:160px; height:35px'>
-                                Cerrar Sesión
-                            </button>
-                        </a>
-                    </div>
-                {% else %}
-                    <div class="col-1 col-sm-1 col-xl-1">
-                        <a href="{{ log_in_url }}">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='width:160px; height:35px'>
-                                Iniciar Sesión
-                            </button>
-                        </a>
-                    </div>
-                {% endif %}
-
             </nav>
         </div>
     </section>
