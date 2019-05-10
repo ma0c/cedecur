@@ -12,7 +12,7 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css?family=Anton|Karla" rel="stylesheet">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
@@ -76,10 +76,10 @@
                 <div class="row align-items-center">
                     <div class="col-10 col-sm-4">
                         <a class="navbar-brand" href="/">
-                            <img src="{% static 'img/Normal.png' %}" alt="">
+                            <img src="{% static 'img/Logo-Curvas.png' %}" alt="">
                         </a>
                     </div>
-                    <div class="col-2 col-sm-8">
+                    <div class="col-2 col-sm-8 col-xl-6">
                         <div class="row justify-content-center d-none d-sm-none d-lg-block">
                             <div class="social-links">
                                 <a href="https://www.instagram.com/explore/tags/cedecur/?hl=es-la" class="instagram"><i class="fa fa-instagram"></i></a>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="collapse navbar-collapse justify-content-between" id="menuPrincipal">
+                <div class="col-1 col-sm-2 col-xl-2 collapse navbar-collapse justify-content-between" id="menuPrincipal">
                     <ul class="navbar-nav">
                         <li class="nav-item {% if path ==  "/"%} active {% endif %}">
                             <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
