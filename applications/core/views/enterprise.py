@@ -95,49 +95,50 @@ class Detail(
 
         context["discount_qr_code_url"] = conf.DISCOUNTS_QR_CODE_URL_NAME
 
-        if self.request.user.has_perm("core.change_enterprise") and self.get_object().owner == self.request.user:
-            context['update_object_reversed_url'] = reverse_lazy(
-                conf.ENTERPRISE_UPDATE_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
-        if self.request.user.has_perm("core.delete_enterprise") and self.get_object().owner == self.request.user:
-            context['delete_object_reversed_url'] = reverse_lazy(
-                conf.ENTERPRISE_DELETE_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
-        if self.request.user.has_perm("core.add_product") and self.get_object().owner == self.request.user:
-            context['add_product_reversed_url'] = reverse_lazy(
-                conf.ENTERPRISE_ADD_PRODUCT_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
-        if self.request.user.has_perm("core.change_product") and self.get_object().owner == self.request.user:
-            context['change_product_url'] = conf.ENTERPRISE_UPDATE_PRODUCT_URL_NAME
-
-        if self.request.user.has_perm("core.delete_product") and self.get_object().owner == self.request.user:
-            context['delete_product_url'] = conf.ENTERPRISE_DELETE_PRODUCT_URL_NAME
-
-        if self.request.user.has_perm("core.add_discounts") and self.get_object().owner == self.request.user:
-            context['add_discount_reversed_url'] = reverse_lazy(
-                conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
-        if self.request.user.has_perm("core.delete_discounts") and self.get_object().owner == self.request.user:
-            context['delete_discount_url'] = conf.ENTERPRISE_DELETE_DISCOUNT_URL_NAME
-
-        if self.get_object().owner == self.request.user:
-            context['list_contact_url_reversed'] = reverse_lazy(
-                conf.ENTERPRISE_LIST_CONTACT_URL_NAME,
-                kwargs=self.kwargs_for_reverse_url()
-            )
-
         context["add_contact_reversed_url"] = reverse_lazy(
             conf.ENTERPRISE_ADD_CONTACT_URL_NAME,
             kwargs=self.kwargs_for_reverse_url()
         )
+
+        if self.get_object().owner == self.request.user or self.request.user.is_staff:
+
+            if self.request.user.has_perm("core.change_enterprise"):
+                context['update_object_reversed_url'] = reverse_lazy(
+                    conf.ENTERPRISE_UPDATE_URL_NAME,
+                    kwargs=self.kwargs_for_reverse_url()
+                )
+
+            if self.request.user.has_perm("core.delete_enterprise"):
+                context['delete_object_reversed_url'] = reverse_lazy(
+                    conf.ENTERPRISE_DELETE_URL_NAME,
+                    kwargs=self.kwargs_for_reverse_url()
+                )
+
+            if self.request.user.has_perm("core.add_product"):
+                context['add_product_reversed_url'] = reverse_lazy(
+                    conf.ENTERPRISE_ADD_PRODUCT_URL_NAME,
+                    kwargs=self.kwargs_for_reverse_url()
+                )
+
+            if self.request.user.has_perm("core.change_product"):
+                context['change_product_url'] = conf.ENTERPRISE_UPDATE_PRODUCT_URL_NAME
+
+            if self.request.user.has_perm("core.delete_product"):
+                context['delete_product_url'] = conf.ENTERPRISE_DELETE_PRODUCT_URL_NAME
+
+            if self.request.user.has_perm("core.add_discounts"):
+                context['add_discount_reversed_url'] = reverse_lazy(
+                    conf.ENTERPRISE_ADD_DISCOUNT_URL_NAME,
+                    kwargs=self.kwargs_for_reverse_url()
+                )
+
+            if self.request.user.has_perm("core.delete_discounts"):
+                context['delete_discount_url'] = conf.ENTERPRISE_DELETE_DISCOUNT_URL_NAME
+
+                context['list_contact_url_reversed'] = reverse_lazy(
+                    conf.ENTERPRISE_LIST_CONTACT_URL_NAME,
+                    kwargs=self.kwargs_for_reverse_url()
+                )
 
         return context
 

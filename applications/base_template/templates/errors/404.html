@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    <h1 style="margin-top: 120px;  color: black">
+        {% trans 'Not Found' %}
+    </h1>
+    <p style="color: black">
+        {% trans "The URL that you're requesting is not found on this server" %}
+    </p>
+{% endblock %}

@@ -8,6 +8,7 @@ ALLOWED_HOSTS = [
     "seletienecali.com",
     "www.seletienecali.com",
     "app.seletienecali.com",
+    "pruebas.seletienecali.com",
 ]
 
 

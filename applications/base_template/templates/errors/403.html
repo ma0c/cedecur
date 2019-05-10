@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    <h1 style="margin-top: 120px; color: black">
+        {% trans 'Forbidden' %}
+    </h1>
+    <p style=" color: black">
+        {% trans "You haven't access to this site" %}
+    </p>
+{% endblock %}
