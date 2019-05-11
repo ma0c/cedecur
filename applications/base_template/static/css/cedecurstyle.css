@@ -16,6 +16,15 @@
 	-o-transition: all 0.3s;
 	transition: all 0.3s;
 }
+
+#facebook{
+color: #3b5998!important;
+}
+
+#instagram{
+color: #e95950!important;
+}
+
 .social-links a span {
 	display: inline-block;
 	font-size: 8px;
