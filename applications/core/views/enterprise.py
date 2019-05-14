@@ -215,7 +215,7 @@ class EntreprenoursFilteredByCategory(Entreprenours):
         return models.Category.objects.get(slug=self.kwargs.get("slug", ""))
 
     def get_queryset(self):
-        return models.Enterprise.objects.filter(category=self.get_category())
+        return models.Enterprise.objects.filter(active=True, category=self.get_category())
 
 
 class EntreprenoursFilteredBySubCategory(Entreprenours):
@@ -224,7 +224,7 @@ class EntreprenoursFilteredBySubCategory(Entreprenours):
         return models.Subcategory.objects.get(slug=self.kwargs.get("slug", ""))
 
     def get_queryset(self):
-        return models.Enterprise.objects.filter(sub_category=self.get_subcategory())
+        return models.Enterprise.objects.filter(active=True, sub_category=self.get_subcategory())
 
 
 class EntreprenoursFilteredBySearch(Entreprenours):
@@ -232,6 +232,8 @@ class EntreprenoursFilteredBySearch(Entreprenours):
     def get_queryset(self):
         query_parameter = self.request.GET.get("search", "")
         return models.Enterprise.objects.filter(
+            active=True
+        ).filter(
             Q(name__icontains=query_parameter) |
             Q(description__icontains=query_parameter) |
             Q(keyboards__icontains=query_parameter)
