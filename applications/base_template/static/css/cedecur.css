@@ -134,6 +134,11 @@ h8 {
 		border-left-color: transparent;
 	}
 }
+.header-padding{
+	padding-top: 150px;
+	padding-left: 50px;
+	padding-right: 50px;
+}
 
 .datos-empresa{
 	padding-bottom: 15px;

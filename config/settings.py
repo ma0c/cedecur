@@ -143,3 +143,7 @@ MEDIA_ROOT = os.path.join(
     BASE_DIR,
     "media"
 )
+
+
+AUTH_TEMPLATE_FOLDER = "custom_authentication"
+BASE_TEMPLATES_FOLDER = "base/cedecur"

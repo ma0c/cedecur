@@ -61,6 +61,11 @@ class Create(SuperAdminRequiredMixin, PermissionRequiredMixin, base_views.BaseCr
     def __init__(self):
         super(Create, self).__init__()
 
+    def kwargs_for_reverse_url(self):
+        return {
+            conf.ENTERPRISE_SLUG_URL_KWARG: self.get_object().slug
+        }
+
     def get_success_url(self):
         return reverse_lazy(conf.ENTERPRISE_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
 
@@ -157,6 +162,7 @@ class Update(
         'core.change_enterprise'
     )
     slug_url_kwarg = conf.ENTERPRISE_SLUG_URL_KWARG
+    template_name = "core/enterprise/update.html"
 
     def __init__(self):
         super(Update, self).__init__()
@@ -165,6 +171,11 @@ class Update(
         if self.request.user.is_staff:
             return forms.Enterprise
         return forms.EnterpriseForOwners
+
+    def kwargs_for_reverse_url(self):
+        return {
+            conf.ENTERPRISE_SLUG_URL_KWARG: self.get_object().slug
+        }
 
     def get_success_url(self):
         return reverse_lazy(conf.ENTERPRISE_DETAIL_URL_NAME, kwargs=self.kwargs_for_reverse_url())
@@ -222,7 +233,8 @@ class EntreprenoursFilteredBySearch(Entreprenours):
         query_parameter = self.request.GET.get("search", "")
         return models.Enterprise.objects.filter(
             Q(name__icontains=query_parameter) |
-            Q(description=query_parameter)
+            Q(description__icontains=query_parameter) |
+            Q(keyboards__icontains=query_parameter)
         )
 
 

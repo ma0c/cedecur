@@ -76,8 +76,14 @@
                                                 <br>
                                             </div>
                                             <div class="social-box-profile social-links text-center">
-                                                <a href="{{ enterprise.facebook_url }}" class="facebook"><i class="fa fa-facebook" id="facebook"></i></a>
-                                                <a href="{{ enterprise.instagram_url }}" class="instagram"><i class="fa fa-instagram" id="instagram"></i></a>
+                                                {% if enterprise.facebook_url  %}
+                                                    <a href="{{ enterprise.facebook_url }}" class="facebook"><i class="fa fa-facebook" id="facebook"></i></a>
+                                                {% endif %}
+                                                {% if enterprise.instagram_url %}
+                                                    <a href="{{ enterprise.instagram_url }}" class="instagram"><i class="fa fa-instagram" id="instagram"></i></a>
+                                                {% endif %}
+
+
                                             </div>
                                         <!--<div class="pi-links">
                                             <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>

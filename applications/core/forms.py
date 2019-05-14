@@ -38,8 +38,8 @@ class EnterpriseForOwners(Enterprise):
             "sub_category",
             "latitude",
             "longitude"
-
         ]
+
 
 class Product(forms.ModelForm):
     class Meta:
