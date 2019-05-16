@@ -1,27 +1,11 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load input_checker %}
-{% load staticfiles %}
 {% block content %}
-    <h1>{% trans 'Update' %} {{ model_name }}</h1>
+    <h1 class="header-padding">{% trans 'Create' %} {{ model_name }}</h1>
     <div class="row">
         <div class="col">
-            <div class="col-lg-4 col-sm-6">
-                <div class="product-item">
-                    <div class="pi-pic">
-                        <!--<div class="tag-sale">ON SALE</div>-->
-                        {% if product.picture %}
-                            <img src="{{ product.picture.url }}" alt="">
-                        {% else %}
-                            <img src="{% static 'img/default-placeholder.png' %}" alt="">
-                        {% endif %}
-                    </div>
-                    <!--<div class="pi-text">
-                        <h6>$35,00</h6>
-                        <p>Black and White Stripes Dress</p>
-                    </div>-->
-                </div>
-            </div>
+
             <form method="POST" enctype="multipart/form-data" class="">
                 {% csrf_token %}
                 {% if form.non_field_errors %}
@@ -33,9 +17,9 @@
                 {% endif %}
                 {% for input in form %}
                     <div class="row">
-                        {% if input.errors %}
-                            {{ input.errors }}
-                        {% endif %}
+                    {% if input.errors %}
+                        {{ input.errors }}
+                    {% endif %}
                     </div>
                     <div class="form-group">
                         {%  if input|is_checkbox %}
@@ -50,32 +34,32 @@
                             <label>{{ input.label }}</label>
                             {{ input }}
                         {% elif input|is_file%}
-                            <label>{{ input.label }}</label>
-                            {{ input }}
+                                <label>{{ input.label }}</label>
+                                {{ input }}
                         {% elif input|is_text_area%}
-                            <label for="{{ input.name }}">{{ input.label }}</label><br>
-                            {{ input }}
+                                <label for="{{ input.name }}">{{ input.label }}</label><br>
+                                {{ input }}
                         {% else %}
 
-                            <label for="{{ input.name }}">{{ input.label }}</label>
-                            {{ input }}
+                                <label for="{{ input.name }}">{{ input.label }}</label>
+                                {{ input }}
                         {% endif %}
-                    </div>
+                        </div>
 
                 {% endfor %}
-
                 <div class="actions">
 
                     <a href="javascript:window.history.back();">
                         <div class="btn btn-default">
-                            {% trans 'Back' %}
+                                Back
                         </div>
                     </a>
-                    <button type="submit" class="btn btn-primary">
-                        {% trans 'update' %}
+                    <button type="submit" class="btn btn-success">
+                        {% trans 'create' %}
                     </button>
                 </div>
             </form>
         </div>
     </div>
+
 {% endblock %}

@@ -29,6 +29,8 @@ class Subcategory(base_models.FullSlugBaseModel):
 class Enterprise(base_models.FullSlugBaseModel):
     owner = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
 
+    keyboards = models.TextField(default="")
+
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True)
     sub_category = models.ForeignKey(Subcategory, on_delete=models.SET_NULL, null=True)
 

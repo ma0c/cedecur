@@ -21,6 +21,16 @@
 	<section class="category-section spad">
 		<div class="container">
 			<div class="row">
+				<div class=" col-12 col-sm-12 col-lg-12 spad">
+					<nav class="navbar navbar-expand-lg navbar-light">
+					  <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+					    <form class="form-inline my-2 my-lg-0" action="{% url search_filter_url_name %}">
+					      <input class="form-control mr-sm-2" type="search" name="search" placeholder="Buscar por Nombre" aria-label="Search">
+					      <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><img src="img/lupa.webp" alt="" style="max-width: 35px;"></button>
+					    </form>
+					  </div>
+					</nav>
+				</div>
                 <div class=" col-12 col-lg-2">
                         <div class="filter-widget">
                                 <h2 class="fw-title">Categorias</h2>
@@ -65,9 +75,15 @@
                                                 <br>
                                                 <br>
                                             </div>
-                                            <div class="social-box-profile social-links shift_the_nav text-center">
-                                                <a href="" class="facebook"><i class="fa fa-facebook" id="facebook"></i></a>
-                                                <a href="" class="instagram"><i class="fa fa-instagram" id="instagram"></i></a>
+                                            <div class="social-box-profile social-links text-center">
+                                                {% if enterprise.facebook_url  %}
+                                                    <a href="{{ enterprise.facebook_url }}" class="facebook"><i class="fa fa-facebook" id="facebook"></i></a>
+                                                {% endif %}
+                                                {% if enterprise.instagram_url %}
+                                                    <a href="{{ enterprise.instagram_url }}" class="instagram"><i class="fa fa-instagram" id="instagram"></i></a>
+                                                {% endif %}
+
+
                                             </div>
                                         <!--<div class="pi-links">
                                             <a href="#" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>

@@ -46,16 +46,16 @@
         <div class="row">
             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top justify-content-center">
                 <div class="row justify-content-center d-lg-none d-xl-none">
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/explore/tags/cedecur/?hl=es-la" class="instagram"><i class="fa fa-instagram"></i></a>
+                    <div class="social-links col-6 col-sm-6 col-lg-6 col-xl-6">
+{#                        <a href="https://www.instagram.com/explore/tags/cedecur/?hl=es-la" class="instagram"><i class="fa fa-instagram"></i></a>#}
 
                         <a href="https://www.facebook.com/cedecur.cali.3" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="https://twitter.com/Cedecurcali" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCXi5p7aqWt5y8VXkxIFFJOw" class="youtube"><i class="fa fa-youtube"></i></a>
+{#                        <a href="https://twitter.com/Cedecurcali" class="twitter"><i class="fa fa-twitter"></i></a>#}
+{#                        <a href="https://www.youtube.com/channel/UCXi5p7aqWt5y8VXkxIFFJOw" class="youtube"><i class="fa fa-youtube"></i></a>#}
 
                     </div>
                     {% if user.is_authenticated %}
-                        <div class="col-1 col-sm-1 col-xl-1">
+                        <div class="col-6 col-sm-6 col-lg-6 col-xl-6">
 
                             <a href="{{ log_out_url }}">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='width:160px; height:35px'>
@@ -64,7 +64,7 @@
                             </a>
                         </div>
                     {% else %}
-                        <div class="col-1 col-sm-1 col-xl-1">
+                        <div class="col-6 col-sm-6 col-lg-6 col-xl-6">
                             <a href="{{ log_in_url }}">
                                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style='width:160px; height:35px'>
                                     Iniciar Sesión
@@ -74,29 +74,27 @@
                     {% endif %}
                 </div>
                 <div class="row align-items-center">
-                    <div class="col-9 col-sm-3 col-xl-3">
+                    <div class="col-9 col-sm-9 col-lg-5 col-xl-3">
                         <a class="navbar-brand" href="/">
                             <img src="{% static 'img/Logo-Curvas.png' %}" alt="">
                         </a>
                     </div>
-                    <div class="col-2 col-sm-8 col-xl-6">
+                    <div class="col-2 col-sm-3 col-lg-4 col-xl-6">
                         <div class="row justify-content-center d-none d-sm-none d-lg-block">
                             <div class="social-links">
-                                <a href="https://www.instagram.com/explore/tags/cedecur/?hl=es-la" class="instagram"><i class="fa fa-instagram"></i></a>
+{#                                <a href="https://www.instagram.com/explore/tags/cedecur/?hl=es-la" class="instagram"><i class="fa fa-instagram"></i></a>#}
 
                                 <a href="https://www.facebook.com/cedecur.cali.3" class="facebook"><i class="fa fa-facebook"></i></a>
-                                <a href="https://twitter.com/Cedecurcali" class="twitter"><i class="fa fa-twitter"></i></a>
-                                <a href="https://www.youtube.com/channel/UCXi5p7aqWt5y8VXkxIFFJOw" class="youtube"><i class="fa fa-youtube"></i></a>
+{#                                <a href="https://twitter.com/Cedecurcali" class="twitter"><i class="fa fa-twitter"></i></a>#}
+{#                                <a href="https://www.youtube.com/channel/UCXi5p7aqWt5y8VXkxIFFJOw" class="youtube"><i class="fa fa-youtube"></i></a>#}
 
                             </div>
                         </div>
-                        <div class="row justify-content-end">
-                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                            </button>
-                        </div>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#menuPrincipal" aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+				     		<span class="navbar-toggler-icon"></span>
+				    		</button>
                     </div>
-                    <div class="col-1 col-sm-2 col-xl-2 collapse navbar-collapse justify-content-between" id="menuPrincipal">
+                    <div class="col-2 col-sm-2 col-lg-2 col-xl-2 collapse navbar-collapse justify-content-between" id="menuPrincipal">
                         <ul class="navbar-nav">
                             <li class="nav-item {% if path ==  "/"%} active {% endif %}">
                                 <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
@@ -167,10 +165,10 @@
             <div class="col-xl-8 col-sm-7 col-6">
                 <div class="row">
                     <div class="social-links social-links-border text-right col-xl-12 col-sm-12 col-12">
-                        <a href="https://www.instagram.com/explore/tags/cedecur/?hl=es-la" class="instagram"><i class="fa fa-instagram"></i></a>
+{#                        <a href="https://www.instagram.com/explore/tags/cedecur/?hl=es-la" class="instagram"><i class="fa fa-instagram"></i></a>#}
                         <a href="https://www.facebook.com/cedecur.cali.3" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="https://twitter.com/Cedecurcali" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="https://www.youtube.com/channel/UCXi5p7aqWt5y8VXkxIFFJOw" class="youtube"><i class="fa fa-youtube"></i></a>
+{#                        <a href="https://twitter.com/Cedecurcali" class="twitter"><i class="fa fa-twitter"></i></a>#}
+{#                        <a href="https://www.youtube.com/channel/UCXi5p7aqWt5y8VXkxIFFJOw" class="youtube"><i class="fa fa-youtube"></i></a>#}
                     </div>
                     <div class="col-xl-12 col-sm-12 col-12"	>
                         <p class="text-white text-right mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> <br>All rights reserved | <a href="/" target="_blank">CEDECUR</a></p>
