@@ -82,6 +82,9 @@
                                                 {% if enterprise.instagram_url %}
                                                     <a href="{{ enterprise.instagram_url }}" class="instagram"><i class="fa fa-instagram" id="instagram"></i></a>
                                                 {% endif %}
+                                                {% if enterprise.whatsapp_number %}
+                                                    <a href="https://wa.me/57{{ enterprise.whatsapp_number }}" class="whatsapp"><i class="fa fa-whatsapp" id="whatsapp"></i></a>
+                                                {% endif %}
 
 
                                             </div>

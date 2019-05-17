@@ -199,6 +199,11 @@ urlpatterns += [
         discounts.QRCode.as_view(),
         name=conf.DISCOUNTS_QR_CODE_URL_NAME
     ),
+    path(
+        'discounts/validate/',
+        discounts.ValidateDiscount.as_view(),
+        name=conf.DISCOUNTS_VALIDATE_CODE_URL_NAME
+    ),
 ]
 
 # from .views import contact

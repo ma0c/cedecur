@@ -4,9 +4,13 @@ try:
 except ImportError:
     from django.urls import reverse_lazy
 from django import http
+from django.utils import timezone
 
 
-from base import views as base_views
+from base import (
+    views as base_views,
+    context_processors as base_context_processors
+)
 
 from .. import (
     models,
@@ -124,6 +128,28 @@ class QRCode(
 
     def get_context_data(self, **kwargs):
         context = super(QRCode, self).get_context_data(**kwargs)
-        context['qr_image'] = utils.get_base64_qr_code(self.get_object().code)
+        context['qr_image'] = utils.get_base64_qr_code(
+            "{}{}?code={}".format(
+                base_context_processors.site_name(self.request)["site_root"],
+                reverse_lazy(conf.DISCOUNTS_VALIDATE_CODE_URL_NAME),
+                self.get_object().code
+            )
+        )
 
+        return context
+
+
+class ValidateDiscount(base_views.generic.TemplateView):
+    template_name = "core/discounts/validate_discount.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            discount = models.Discounts.objects.get(code=self.request.GET.get("code", ""))
+            if discount.expires_on > timezone.now():
+                context["status"] = conf.DISCOUNT_VALID
+            else:
+                context["status"] = conf.DISCOUNT_EXPIRED
+        except models.Discounts.DoesNotExist:
+            context["status"] = conf.DISCOUNT_DOES_NOT_EXISTS
         return context

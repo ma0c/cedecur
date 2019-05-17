@@ -41,6 +41,7 @@ class Enterprise(base_models.FullSlugBaseModel):
     twitter_url = models.URLField(blank=True, null=True)
     youtube_url = models.URLField(blank=True, null=True)
     instagram_url = models.URLField(blank=True, null=True)
+    whatsapp_number = models.TextField(blank=True, null=True)
 
     # Location
     latitude = models.FloatField(default=0)

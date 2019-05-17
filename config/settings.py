@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'base',
 
@@ -147,3 +148,5 @@ MEDIA_ROOT = os.path.join(
 
 AUTH_TEMPLATE_FOLDER = "custom_authentication"
 BASE_TEMPLATES_FOLDER = "base/cedecur"
+
+SITE_ID = os.environ.get('SITE_ID', 1)
