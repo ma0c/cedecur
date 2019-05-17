@@ -91,58 +91,7 @@
 						<div class="fw-size-choose">
 						</div>
 					</div>
-{#					<div class="filter-widget">#}
-{#						<h2 class="fw-title text-center">Últimos Post</h2>#}
-{#						<div class="row">#}
-{#							<div class="instagram-photo col-6 col-xl-4">#}
-{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
-{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
-{#								</a>#}
-{#							</div>#}
-{#							<div class="instagram-photo col-6 col-xl-4">#}
-{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
-{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
-{#								</a>#}
-{#							</div>#}
-{#							<div class="instagram-photo col-6 col-xl-4">#}
-{#							<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
-{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
-{#								</a>#}
-{#								</div>#}
-{#							<div class="instagram-photo col-6 col-xl-4">#}
-{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
-{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
-{#								</a>#}
-{#							</div>#}
-{#							<div class="instagram-photo col-6 col-xl-4">#}
-{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
-{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
-{#								</a>#}
-{#							</div>#}
-{#							<div class="instagram-photo col-6 col-xl-4">#}
-{#								<a href="https://www.instagram.com/p/BtjjNxeDn20/" class="p-instagram" data-src="" rel="nofollow noopener" target="_blank">#}
-{#								<img src="{% static 'img/default-placeholder.png' %}" class="p3_instagram_square" alt="">#}
-{#								</a>#}
-{#							</div>#}
-{#						</div>#}
-{#						<div class="filter-widget mb-0">#}
-{#								<div class="fw-size-choose">#}
-{#								</div>#}
-{#							</div>#}
-{#						<!--<ul class="category-menu">#}
-{#							<li><a href="#">Abercrombie & Fitch <span>(2)</span></a></li>#}
-{#							<li><a href="#">Asos<span>(56)</span></a></li>#}
-{#							<li><a href="#">Bershka<span>(36)</span></a></li>#}
-{#							<li><a href="#">Missguided<span>(27)</span></a></li>#}
-{#							<li><a href="#">Zara<span>(19)</span></a></li>#}
-{#						</ul>-->#}
-{#					</div>#}
-{#					<div class="filter-widget">#}
-{#						<h2 class="fw-title text-center">Ubicación</h2>#}
-{#						<div class="google-maps col-12 col-xl-12 text-left">#}
-{#							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d127450.10983615229!2d-76.59570455903695!3d3.3950618692137358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e30a6f0cc4bb3f1%3A0x1f0fb5e952ae6168!2sCali%2C+Valle+del+Cauca!5e0!3m2!1ses!2sco!4v1550789893379" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>#}
-{#						</div>#}
-{#                    </div>#}
+
 				</div>
 
 				<div class="col-12 col-lg-8  order-2 order-lg-2 mb-5 mb-lg-0">
@@ -155,18 +104,18 @@
 
                                     {% else %}
                                         <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <h5>Branding de la Marca</h5>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
-                                        <br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<h5>Branding de la Marca</h5>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
                                     {% endif %}
 								</div>		
 							</div>
@@ -238,6 +187,9 @@
                                 {% endif %}
                                 {% if enterprise.youtube_url %}
                                     <p><a href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
+                                {% endif %}
+                                {% if enterprise.whatsapp_number %}
+                                    <p><a href="https://wa.me/57{{ enterprise.whatsapp_number }}" class="whatsapp"><i class="fa fa-whatsapp" id="whatsapp"></i></a></p>
                                 {% endif %}
                             </div>
                     </div>
