@@ -134,11 +134,22 @@ h8 {
 		border-left-color: transparent;
 	}
 }
-.header-padding{
-	padding-top: 150px;
-	padding-left: 50px;
-	padding-right: 50px;
+
+.form-control {
+    display: block;
+    width: 75%;
+    height: calc(2.25rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
 }
+
 
 .datos-empresa{
 	padding-bottom: 15px;
@@ -159,6 +170,11 @@ nav > div{
 }
 li.active{
     font-weight: 700;
+}
+
+.spad {
+	padding-top: 15px;
+	/*padding-bottom: 105px;*/
 }
 
 .informacion-basica{
@@ -427,7 +443,7 @@ li.active{
 .page-top-info {
     position: relative;
 	background: #fff;
-	padding: 150px 0 20px;
+	padding: 50px 0 20px;
 }
 
 .page-top-info h4 {
@@ -766,7 +782,7 @@ li.active{
 		margin-left: 5px;
 	}
 	.hero-slider .slider-nav-warp {
-		max-width: 510px;
+		max-width: 500px;
 	}
 	.hero-slider .hs-item h2 {
 		font-size: 50px;
