@@ -46,6 +46,13 @@
                                 <h2 class="fw-title">Información Basica</h2>
                                 <p1>Nombre : {{ enterprise.name }}</p1>
                             </div>
+                            {% if enterprise.whatsapp_number %}
+                                <div class="text-center">
+                                    <a href="https://wa.me/57{{ enterprise.whatsapp_number }}">
+                                        <button class="btn btn-outline-success my-2 my-sm-0"><span class="fa fa-whatsapp"><p1> Escribenos!</p1></span></button>
+                                    </a>
+                                </div>
+                            {% endif %}
                             {% if update_object_reversed_url %}
                                 <a href="{{ update_object_reversed_url }}">
                                     <button class="btn btn-primary">
