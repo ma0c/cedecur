@@ -68,6 +68,7 @@ class DiscountsMinimal(Discounts):
     class Meta(Discounts.Meta):
         fields = [
             "product",
+            "image",
             "description",
             "expires_on"
         ]

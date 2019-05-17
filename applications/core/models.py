@@ -69,7 +69,7 @@ class Discounts(base_models.FullSlugBaseModel):
 
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     code = models.CharField(max_length=CODE_LENGTH, unique=True)
-
+    image = models.FileField(null=True, blank=True)
     expires_on = models.DateTimeField()
 
     def __str__(self):
