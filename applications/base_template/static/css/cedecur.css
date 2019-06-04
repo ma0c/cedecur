@@ -1,74 +1,138 @@
+*{
+		font-family: 'Dosis', sans-serif;
+
+}
 p {
-	font-family: 'Karla', sans-serif;
-	font-size: 14px;
+	font-family: 'Dosis', sans-serif;
+	font-size: 18px;
 	color: #fff;
 	line-height: 1.6;
 }
 
-p1 {
-	font-family: 'Karla', sans-serif;
-	font-size: 16px;
+.p1 {
+	font-family: 'Dosis', sans-serif;
+	font-size: 18px;
 	color: #585858;
 	line-height: 1.6;
 }
+section#inicio .row{
+	margin-right: 0;
+	margin-left: 0;
+	font-family: 'Dosis', sans-serif;
 
+}
+section.footer-section{
+		font-family: 'Dosis', sans-serif;
+
+}
+.nombreEmpresa{
+font-weight: bold;
+padding: 10px;
+}
+.branding-borde{
+	padding: 15px 0;
+}
+.categorias{
+	
+	font-family: 'Dosis', sans-serif;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	-o-flex-wrap: wrap;
+	flex-wrap: wrap;
+	
+}
+.row{
+	margin-right: 0!important;
+}
+#categoria{
+	height: 300px;
+    background-color: #1E8A3C;
+    margin: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 10px;
+}
+#categoria:hover{
+	background-color: #c8523f;
+}
+.icoCat{
+	width: 100px;
+    height: 100px;
+    margin: 0 auto 10px auto;
+    color: white;
+    font-size: 100px;
+    line-height: 100px;
+}
+.nomCat{
+	font-size: 120%;
+	padding: 10px;
+	font-weight: bold;
+	color: white;
+}
 h1,
 h2,
 h3,
 h4,
 h5,
 h6,
-h7 {
+{
 	margin: 0;
 	color: #111111;
 	font-weight: 600;
 }
 
 h1 {
-	font-family: 'Anton', sans-serif;
+	font-family: 'Dosis', sans-serif;
+	font-weight: bold;
 	color:#000;
 	font-size: 45px;
 	letter-spacing: 2pt;
 }
 
 h2 {
-	font-family: 'Karla', sans-serif;
+	font-family: 'Dosis', sans-serif;
+	font-weight: bold;
 	font-size: 90px;
 }
 
 h3 {
-	font-family: 'Karla', sans-serif;
+	font-family: 'Dosis', sans-serif;
+	font-weight: bold;
 	font-size: 30px;
 }
 
 h4 {
-	font-family: 'Anton', sans-serif;	
+	font-family: 'Dosis', sans-serif;	
 	color:#fff;	
-	font-size: 24px;
+	font-size: 18px;
 	text-transform: uppercase;
 	letter-spacing: 2pt;
 }
 
 h5 {
-	font-family: 'Anton', sans-serif;
+	font-family: 'Dosis', sans-serif;
+	font-weight: bold;
 	font-size: 18px;
 	letter-spacing: 2pt;
 }
 
 h6 {
-	font-family: 'Karla', sans-serif;
-	font-size: 16px;
-}
-
-h7 {
-	font-family: 'Karla', sans-serif;
+	font-family: 'Dosis', sans-serif;
 	font-size: 18px;
 }
-h8 {
-	font-family: 'Anton', sans-serif;	
-	color:#000;	
-	font-size: 26px;
-	text-transform: uppercase;
+
+
+#tituloEmpresa h2{
+	color: #C8523F!important;
+	font-weight: bold!important;
+}
+.branding-borde p{
+	color: black;
 }
 
 /* Preloder */
