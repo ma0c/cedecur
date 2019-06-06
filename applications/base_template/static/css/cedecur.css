@@ -1,3 +1,7 @@
+
+.collapse.show {
+    display: block;
+}
 *{
 	font-family: 'Dosis', sans-serif;
 
