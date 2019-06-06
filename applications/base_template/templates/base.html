@@ -13,6 +13,7 @@
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Anton|Karla" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Dosis:400,700&display=swap" rel="stylesheet">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
@@ -64,7 +65,7 @@
                             <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if  "/empresa" in path %} active {% endif %}" href="/empresarios">Empresarios</a>
+                            <a class="nav-link {% if  "/empresa" in path %} active {% endif %}" href="/empresarios">Empresas</a>
                         </li>
                         {% if user.is_authenticated %}
                             {% if enterprise_manager_url %}
@@ -117,39 +118,36 @@
     </div>
 </section>
 <!-- Footer section -->
-<section class="footer-section">
-    <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="footer-logo text-center col-xl-3 col-sm-4 col-4">
-                <a href="/"><img src="{% static 'img/Verde.png' %}" alt=""></a>
-            </div>
-            <div class="col-xl-8 col-sm-7 col-6">
-                <div class="row">
-                    <div class="social-links social-links-border text-right col-xl-12 col-sm-12 col-12">
-                        {#                        <a href="https://www.instagram.com/explore/tags/cedecur/?hl=es-la" class="instagram"><i class="fa fa-instagram"></i></a>#}
-                        <a href="https://www.facebook.com/cedecur.cali.3" class="facebook"><i class="fa fa-facebook"></i></a>
-                        {#                        <a href="https://twitter.com/Cedecurcali" class="twitter"><i class="fa fa-twitter"></i></a>#}
-                        {#                        <a href="https://www.youtube.com/channel/UCXi5p7aqWt5y8VXkxIFFJOw" class="youtube"><i class="fa fa-youtube"></i></a>#}
-                    </div>
-                    <div class="col-xl-12 col-sm-12 col-12"	>
-                        <p class="text-white text-right mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> <br>All rights reserved | <a href="/" target="_blank">CEDECUR</a></p>
-                    </div>
-                </div>
-            </div>
+	<section class="footer-section">
+		<div class="container-fluid">
+			<div class="row align-items-center">
+				<div class="footer-logo text-center col-xl-3 col-sm-4 col-4">
+					<a href="index.html"><img src="img/Verde.png" alt=""></a>
+				</div>
+				<div class="col-xl-8 col-sm-7 col-6">
+					<div class="row">
+						<div class="social-links social-links-border text-right col-xl-12 col-sm-12 col-12">
+							<a href="" class="facebook"><i class="fa fa-facebook"></i></a>
+						</div>
+						<div class="col-xl-12 col-sm-12 col-12"	>
+								<p class="text-white text-right mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> <br>All rights reserved | <a href="index.html" target="_blank">CEDECUR</a></p>
+						</div>
+					</div>
+				</div>
 
-            <div class="return col-xl-1 col-sm-1 col-2">
-                <a href="#inicio"><img src="{% static 'img/btn-subir.png' %}" alt=""></a>
-            </div>
-        </div>
-    </div>
+				<div class="return col-xl-1 col-sm-1 col-2">
+						<a href="#inicio"><img src="{% static 'img/btn-subir.png' %}" alt=""></a>
+				</div>
+			</div>
+		</div>
 
-    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
-    <p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
-    Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+<p class="text-white text-center mt-5">Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p> -->
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
 
-                </div>
-            </div>-->
-</section>
+			</div>
+		</div>-->
+	</section>
 <!-- Footer section end -->
 
 {#<section class="footer-section2">#}
