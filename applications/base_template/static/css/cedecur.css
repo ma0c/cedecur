@@ -2,6 +2,9 @@
 	font-family: 'Dosis', sans-serif;
 
 }
+.collapse.show {
+    display: block;
+}
 #facebook i{
 	color: #92a5d3;
 	}
@@ -14,7 +17,13 @@
 #whatsapp i{
 	color: rgb(22, 82, 29);
 	}
+	#instagram i{
+	color: #661855;
+	}
 	
+	#instagram:hover{
+		background-color:#c32aa3;
+	}
 #facebook:hover{
 background-color: #3b5998;
 

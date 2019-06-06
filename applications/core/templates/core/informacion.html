@@ -209,6 +209,9 @@
                             {% if enterprise.youtube_url %}
                                 <p><a id="youtube" href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
                             {% endif %}
+                            {% if enterprise.instagram_url %}
+                                <p><a id="instagram" href="{{ enterprise.instagram_url|default:"#" }}"><i class="fa fa-instagram"></i></a></p>
+                            {% endif %}
                             {% if enterprise.whatsapp_number %}
                                 <p><a id="whatsapp" href="https://wa.me/57{{ enterprise.whatsapp_number }}" class="whatsapp"><i class="fa fa-whatsapp" id="whatsapp"></i></a></p>
                             {% endif %}
