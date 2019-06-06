@@ -6,11 +6,8 @@
 
 {% block content %}
     <div class="header-padding">
-        <div class="row">
-            <h1>
-                {% trans 'Log in' %}
-            </h1>
-        </div>
+        <br>
+        <br>
         {% if user.is_authenticated %}
             {% if user.is_anonymous %}
                 {% trans 'Please activate your account'%}
@@ -46,7 +43,7 @@
                             {{ input }}
                             </div>
                         {% endfor %}
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-success">
                             {% trans 'Log in' %}
                             <i class="fa fa-send"></i>
                         </button>

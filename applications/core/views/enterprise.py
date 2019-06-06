@@ -346,13 +346,24 @@ class AddContact(
     form_class = forms.Contact
     slug_url_kwarg = conf.ENTERPRISE_SLUG_URL_KWARG
 
+    def post(self, request, *args, **kwargs):
+        """
+        Handle POST requests: instantiate a form instance with the passed
+        POST variables and then check if it's valid.
+        """
+        form = self.get_form()
+        if form.is_valid():
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
     def form_valid(self, form):
         contact = form.save(commit=False)
         contact.enterprise = self.get_enterprise()
         contact.save()
         messages.add_message(
             self.request,
-            messages.INFO,
+            messages.SUCCESS,
             conf.MESSAGE_POSTED_SUCCESSFULLY
         )
         return http.HttpResponseRedirect(self.get_success_url())

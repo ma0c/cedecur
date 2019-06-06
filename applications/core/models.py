@@ -94,6 +94,7 @@ class Contact(base_models.FullSlugBaseModel):
     enterprise = models.ForeignKey(Enterprise, on_delete=models.CASCADE)
     email = models.EmailField()
     title = models.TextField()
+    tel = models.CharField(default="", max_length=30)
 
     class Meta:
         verbose_name = core_conf.CONTACT_VERBOSE_NAME

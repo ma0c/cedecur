@@ -148,5 +148,7 @@ MEDIA_ROOT = os.path.join(
 
 AUTH_TEMPLATE_FOLDER = "custom_authentication"
 BASE_TEMPLATES_FOLDER = "base/cedecur"
+AUTH_ALLOW_SIGNUP = False
+AUTH_ALLOW_PASSWORD_RECOVERY = False
 
 SITE_ID = os.environ.get('SITE_ID', 1)

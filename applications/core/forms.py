@@ -81,7 +81,8 @@ class Contact(forms.ModelForm):
             "name",
             "email",
             "title",
-            "description"
+            "description",
+            "tel"
         ]
         widgets = generate_bootstrap_widgets_for_all_fields(models.Contact)
 

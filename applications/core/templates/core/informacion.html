@@ -6,25 +6,25 @@
 
 
     <!-- Page info -->
-    <div class="page-top-info">
-        <div class="fondo-cuadro shift_the_nav col-12 col-xl-12">
-            <div class="container text-center">
-                <div class="row">
-                    <div class="site-pagination col-1 col-xl-1">
-                        <a href="javascript:window.history.back();"><img src="{% static 'img/btn-volver.png' %}" alt=""></a>
-                        <!--<a href="../cedecur/index.html">Inicio</a> /
-                        <a href="../cedecur/perfiles1.html">Atras</a>-->
-                    </div>
-                    <div class="col-11 col-xl-11">
-                        <br>
-                        <h4>Información</h4>
-                        <br>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Page info end -->
+	<div class="page-top-info">
+		<div class="col-12 col-xl-12">
+			<div class="container text-center">
+				<div class="row">
+				<div class="site-pagination col-1 col-xl-1">
+					
+					<!--<a href="../cedecur/index.html">Inicio</a> /
+					<a href="../cedecur/perfiles1.html">Atras</a>-->
+				</div>
+				<div id="tituloEmpresa" class="col-11 col-xl-11">
+					
+					<h2>{{enterprise.name}}</h2>
+					
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<!-- Page info end -->
 
 
     <!-- Category section -->
@@ -49,7 +49,7 @@
                             {% if enterprise.whatsapp_number %}
                                 <div class="text-center">
                                     <a href="https://wa.me/57{{ enterprise.whatsapp_number }}">
-                                        <button class="btn btn-outline-success my-2 my-sm-0"><span class="fa fa-whatsapp"><p1> Escribenos!</p1></span></button>
+                                        <button id="btnWpp" class="btn btn-success my-2 my-sm-0" ><span class="fa fa-whatsapp"><p1> Escribenos!</p1></span></button>
                                     </a>
                                 </div>
                             {% endif %}
@@ -120,19 +120,7 @@
                                     {{ enterprise.description }}
 
                                 {% else %}
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <h5>Branding de la Marca</h5>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
-                                    <br>
+                                   <p></p>    
                                 {% endif %}
                             </div>
                         </div>
@@ -145,7 +133,22 @@
                                     <div class="pi-pic">
                                         <!--<div class="tag-sale">ON SALE</div>-->
                                         {% if product.picture %}
-                                            <img src="{{ product.picture.url }}" alt="">
+                                            <img src="{{ product.picture.url }}" alt="" data-toggle="modal" data-target="#exampleModal{{forloop.counter}}">
+                                            <div class="modal fade" id="exampleModal{{forloop.counter}}" tabindex="-1" role="dialog">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">{{product.name}}</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                            <img src="{{ product.picture.url }}" alt="" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </div>
                                         {% else %}
                                             <img src="{% static 'img/default-placeholder.png' %}" alt="">
                                         {% endif %}
@@ -180,6 +183,7 @@
                                 {% csrf_token %}
                                 <input type="text" placeholder="Nombre" name="name">
                                 <input type="text" placeholder="E-mail" name="email">
+                                <input type="number" placeholder="Celular" name="tel">
                                 <input type="text" placeholder="Titulo" name="title">
                                 <p><textarea placeholder="Mensaje" name="description"></textarea></p>
                                 <button class="site-btn">ENVIAR</button>
@@ -197,16 +201,16 @@
                     <div class="col-1 col-lg-1 order-3 order-lg-3 text-center d-none d-sm-block">
                         <div class="social-box contact-social social-links shift_the_nav">
                             {% if enterprise.facebook_url %}
-                                <p><a href="{{ enterprise.facebook_url|default:"#" }}"><i class="fa fa-facebook"></i></a></p>
+                                <p><a id="facebook" href="{{ enterprise.facebook_url|default:"#" }}"><i class="fa fa-facebook"></i></a></p>
                             {% endif %}
                             {% if enterprise.twitter_url %}
-                                <p><a href="{{ enterprise.twitter_url|default:"#" }}"><i class="fa fa-twitter"></i></a></p>
+                                <p><a id="twitter" href="{{ enterprise.twitter_url|default:"#" }}"><i class="fa fa-twitter"></i></a></p>
                             {% endif %}
                             {% if enterprise.youtube_url %}
-                                <p><a href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
+                                <p><a id="youtube" href="{{ enterprise.youtube_url|default:"#" }}"><i class="fa fa-youtube"></i></a></p>
                             {% endif %}
                             {% if enterprise.whatsapp_number %}
-                                <p><a href="https://wa.me/57{{ enterprise.whatsapp_number }}" class="whatsapp"><i class="fa fa-whatsapp" id="whatsapp"></i></a></p>
+                                <p><a id="whatsapp" href="https://wa.me/57{{ enterprise.whatsapp_number }}" class="whatsapp"><i class="fa fa-whatsapp" id="whatsapp"></i></a></p>
                             {% endif %}
                         </div>
                     </div>
