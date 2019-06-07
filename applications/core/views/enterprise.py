@@ -6,7 +6,7 @@ except ImportError:
 from django import http
 from django.utils import timezone
 from django.contrib import messages
-from django.db.models import Q
+from django.db.models import Q, Count
 
 from base import views as base_views
 
@@ -72,6 +72,7 @@ class Create(SuperAdminRequiredMixin, PermissionRequiredMixin, base_views.BaseCr
 
 class Detail(
     mixins.EnterpriseMixin,
+    mixins.AddCounterMixin,
     base_views.BaseDetailView
 ):
     """
@@ -140,10 +141,14 @@ class Detail(
             if self.request.user.has_perm("core.delete_discounts"):
                 context['delete_discount_url'] = conf.ENTERPRISE_DELETE_DISCOUNT_URL_NAME
 
-                context['list_contact_url_reversed'] = reverse_lazy(
-                    conf.ENTERPRISE_LIST_CONTACT_URL_NAME,
-                    kwargs=self.kwargs_for_reverse_url()
-                )
+            context['list_contact_url_reversed'] = reverse_lazy(
+                conf.ENTERPRISE_LIST_CONTACT_URL_NAME,
+                kwargs=self.kwargs_for_reverse_url()
+            )
+            context['page_counter_url_reversed'] = reverse_lazy(
+                conf.ENTERPRISE_SUMMARY_COUNTER_URL_NAME,
+                kwargs=self.kwargs_for_reverse_url()
+            )
 
         return context
 
@@ -399,3 +404,21 @@ class MyEnterprises(
 
     def get_queryset(self):
         return models.Enterprise.objects.filter(owner=self.request.user)
+
+
+class CounterSummary(
+    mixins.EnterpriseMixin,
+    mixins.OwnershipEnterpriseMixin,
+    base_views.generic.TemplateView
+):
+
+    template_name = "core/enterprise/counter_summary.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context["pages_visited"] = models.PageCounter.objects.filter(
+            enterprise=self.get_enterprise()
+        ).values("url").annotate(url_counts=Count('url'))
+
+        return context

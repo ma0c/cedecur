@@ -16,6 +16,7 @@ from .. import (
     models,
     forms,
     conf,
+    mixins,
     utils
 )
 
@@ -120,11 +121,15 @@ class Delete(LoginRequiredMixin, PermissionRequiredMixin, base_views.BaseDeleteV
 
 
 class QRCode(
+    mixins.AddCounterMixin,
     base_views.BaseDetailView
 ):
     model = models.Discounts
     template_name = "core/discounts/qr_code.html"
     context_object_name = "element"
+
+    def get_enterprise(self):
+        return self.get_object().product.enterprise
 
     def get_context_data(self, **kwargs):
         context = super(QRCode, self).get_context_data(**kwargs)
@@ -139,13 +144,25 @@ class QRCode(
         return context
 
 
-class ValidateDiscount(base_views.generic.TemplateView):
+class ValidateDiscount(
+    mixins.AddCounterMixin,
+    base_views.generic.TemplateView
+):
     template_name = "core/discounts/validate_discount.html"
+
+    def get_enterprise(self):
+        try:
+            return self.get_object().product.enterprise
+        except models.Discounts.DoesNotExist:
+            return None
+
+    def get_object(self):
+        return models.Discounts.objects.get(code=self.request.GET.get("code", ""))
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         try:
-            discount = models.Discounts.objects.get(code=self.request.GET.get("code", ""))
+            discount = self.get_object()
             if discount.expires_on > timezone.now():
                 context["status"] = conf.DISCOUNT_VALID
             else:

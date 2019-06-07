@@ -132,6 +132,11 @@ urlpatterns += [
         enterprise.ListContact.as_view(),
         name=conf.ENTERPRISE_LIST_CONTACT_URL_NAME
     ),
+    path(
+        f'empresa/<slug:{conf.ENTERPRISE_SLUG_URL_KWARG}>/estadisticas/',
+        enterprise.CounterSummary.as_view(),
+        name=conf.ENTERPRISE_SUMMARY_COUNTER_URL_NAME
+    ),
 ]
 
 # from .views import product

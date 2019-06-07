@@ -194,6 +194,11 @@
                                 <button>{% trans "See messages" %}</button>
                             </a>
                         {% endif %}
+                        {% if page_counter_url_reversed %}
+                            <a href="{{ page_counter_url_reversed }}">
+                                <button>{% trans "Statistics" %}</button>
+                            </a>
+                        {% endif %}
 
                     </div>
                 </div>

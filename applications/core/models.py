@@ -99,3 +99,12 @@ class Contact(base_models.FullSlugBaseModel):
     class Meta:
         verbose_name = core_conf.CONTACT_VERBOSE_NAME
         verbose_name_plural = core_conf.CONTACT_VERBOSE_NAME_PLURAL
+
+
+class PageCounter(base_models.ModifiableBaseModel):
+    enterprise = models.ForeignKey(Enterprise, null=True, on_delete=models.CASCADE)
+    url = models.TextField(default="")
+
+    def __str__(self):
+        return f"{self.created} {self.enterprise} {self.url}"
+

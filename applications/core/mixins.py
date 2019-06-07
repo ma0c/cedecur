@@ -57,3 +57,18 @@ class DiscountMixin(object):
     def get_discount(self):
         return core_models.Discounts.objects.get(slug=self.kwargs.get(core_conf.DISCOUNTS_SLUG_URL_KWARG, ""))
 
+
+class AddCounterMixin(object):
+    def dispatch(self, request, *args, **kwargs):
+
+        try:
+            enterprise = self.get_enterprise()
+        except AttributeError:
+            enterprise = None
+
+        core_models.PageCounter.objects.create(
+            url=request.path,
+            enterprise=enterprise
+        )
+
+        return super().dispatch(request, *args,  **kwargs)
