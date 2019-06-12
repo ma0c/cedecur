@@ -69,6 +69,7 @@ class DiscountsMinimal(Discounts):
         fields = [
             "product",
             "image",
+            "name",
             "description",
             "expires_on"
         ]

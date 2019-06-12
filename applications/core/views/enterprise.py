@@ -356,6 +356,7 @@ class AddContact(
         Handle POST requests: instantiate a form instance with the passed
         POST variables and then check if it's valid.
         """
+        # self.object = self.get_object()
         form = self.get_form()
         if form.is_valid():
             return self.form_valid(form)
@@ -370,6 +371,14 @@ class AddContact(
             self.request,
             messages.SUCCESS,
             conf.MESSAGE_POSTED_SUCCESSFULLY
+        )
+        return http.HttpResponseRedirect(self.get_success_url())
+
+    def form_invalid(self, form):
+        messages.add_message(
+            self.request,
+            messages.ERROR,
+            conf.MESSAGE_POSTED_UNSUCCESSFULLY
         )
         return http.HttpResponseRedirect(self.get_success_url())
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-06-07 18:33-0500\n"
+"POT-Creation-Date: 2019-06-12 09:54-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -67,12 +67,10 @@ msgid "Discount does not exists"
 msgstr "Descuento no existe"
 
 #: conf.py:117
-#| msgid "Discounts"
 msgid "Discount valid"
 msgstr "Descuento válido"
 
 #: conf.py:118
-#| msgid "Discount for "
 msgid "Discount expired"
 msgstr "Descuento expirado"
 
@@ -83,6 +81,10 @@ msgstr "Contacto"
 #: conf.py:131
 msgid "Message posted successfully"
 msgstr "Mensaje enviado exitosamente"
+
+#: conf.py:132
+msgid "Message were not posted, please fill all the fields"
+msgstr "El mensaje no fue agregado, por favor llene todos los campos"
 
 #: templates/core/contact/list.html:7
 msgid "List of"
@@ -120,7 +122,6 @@ msgstr "Atrás"
 
 #: templates/core/enterprise/update.html:75
 #: templates/core/product/update.html:75
-#| msgid "Update"
 msgid "update"
 msgstr "Actualizar"
 
