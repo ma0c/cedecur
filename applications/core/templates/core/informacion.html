@@ -73,8 +73,13 @@
                             {% for discount in discounts %}
 
                                 <div class="cuadro-descuentos-verde shift_the_nav">
+<<<<<<< HEAD
                                     
                                     <p class="dctNom">{{ discount.product }}</p>
+=======
+                                    <br>
+                                    <p>{{ discount.name }}</p>
+>>>>>>> 73cad8aed2604880fb4bc24d0d2681771c07b812
                                     <div class="product-item">
                                         <div class="pi-pic">
                                             <!--<div class="tag-sale">ON SALE</div>-->
@@ -191,13 +196,22 @@
                                 <input type="text" placeholder="E-mail" name="email" required>
                                 <input type="number" placeholder="Celular" name="tel" required>
                                 <input type="text" placeholder="Titulo" name="title" required>
+<<<<<<< HEAD
                                 <p><textarea placeholder="Mensaje" name="description" required></textarea></p>
+=======
+                                <p><textarea placeholder="Mensaje" name="description"></textarea></p>
+>>>>>>> 73cad8aed2604880fb4bc24d0d2681771c07b812
                                 <button class="site-btn">ENVIAR</button>
                             </form>
                         </div>
                         {% if list_contact_url_reversed %}
                             <a href="{{ list_contact_url_reversed }}">
                                 <button class="btn btn-info">{% trans 'Ver mensajes' %}</button>
+                            </a>
+                        {% endif %}
+                        {% if page_counter_url_reversed %}
+                            <a href="{{ page_counter_url_reversed }}">
+                                <button>{% trans "Statistics" %}</button>
                             </a>
                         {% endif %}
 

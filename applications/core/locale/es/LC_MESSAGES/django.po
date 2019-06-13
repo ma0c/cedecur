@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-24 23:08-0500\n"
+"POT-Creation-Date: 2019-06-12 09:54-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,10 +17,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: conf.py:5
-msgid "Enterprise Manager"
-msgstr "Manejador de empresa"
 
 #: conf.py:30
 msgid "User created: {}"
@@ -46,11 +42,11 @@ msgstr "Categoría ya creada: {}"
 msgid "Subcategory"
 msgstr "Subcategoría"
 
-#: conf.py:59 conf.py:80
+#: conf.py:59 conf.py:87
 msgid "Subcategory created: {}"
 msgstr "Subcategoría creada: {}"
 
-#: conf.py:60 conf.py:81
+#: conf.py:60 conf.py:88
 msgid "Subcategory  already created: {}"
 msgstr "Subcategoría ya creada: {}"
 
@@ -58,21 +54,41 @@ msgstr "Subcategoría ya creada: {}"
 msgid "Enterprise"
 msgstr "Empresa"
 
-#: conf.py:86 conf.py:87
+#: conf.py:93 conf.py:94
 msgid "Product"
 msgstr "Producto"
 
-#: conf.py:96 conf.py:97
+#: conf.py:105 conf.py:106
 msgid "Discounts"
 msgstr "Descuentos"
 
-#: conf.py:108 conf.py:109
+#: conf.py:116
+msgid "Discount does not exists"
+msgstr "Descuento no existe"
+
+#: conf.py:117
+msgid "Discount valid"
+msgstr "Descuento válido"
+
+#: conf.py:118
+msgid "Discount expired"
+msgstr "Descuento expirado"
+
+#: conf.py:122 conf.py:123
 msgid "Contact"
 msgstr "Contacto"
 
-#: conf.py:117
+#: conf.py:131
 msgid "Message posted successfully"
 msgstr "Mensaje enviado exitosamente"
+
+#: conf.py:132
+msgid "Message were not posted, please fill all the fields"
+msgstr "El mensaje no fue agregado, por favor llene todos los campos"
+
+#: templates/core/contact/list.html:7
+msgid "List of"
+msgstr "Lista de"
 
 #: templates/core/discounts/qr_code.html:13
 msgid "Discount for "
@@ -82,22 +98,56 @@ msgstr "Descuento para "
 msgid "Valid until"
 msgstr "Válido hasta"
 
-#: templates/core/informacion.html:75
+#: templates/core/enterprise/counter_summary.html:6
+msgid "Page Counter"
+msgstr "Contador de páginas"
+
+#: templates/core/enterprise/counter_summary.html:12
+msgid "Url"
+msgstr "URL"
+
+#: templates/core/enterprise/counter_summary.html:15
+msgid "Count"
+msgstr "Conteo"
+
+#: templates/core/enterprise/update.html:6 templates/core/informacion.html:59
+#: templates/core/product/update.html:6
 msgid "Update"
 msgstr "Actualizar"
 
-#: templates/core/informacion.html:91
+#: templates/core/enterprise/update.html:71
+#: templates/core/product/update.html:71
+msgid "Back"
+msgstr "Atrás"
+
+#: templates/core/enterprise/update.html:75
+#: templates/core/product/update.html:75
+msgid "update"
+msgstr "Actualizar"
+
+#: templates/core/informacion.html:86
 msgid "Expires"
 msgstr "Se vence "
 
-#: templates/core/informacion.html:102
+#: templates/core/informacion.html:101
 msgid "Add Discount"
 msgstr "Agregar descuento"
 
-#: templates/core/informacion.html:216
+#: templates/core/informacion.html:172
 msgid "There are not products available"
 msgstr "No hay productos disponibles"
 
-#: templates/core/informacion.html:221
+#: templates/core/informacion.html:177
 msgid "Add product"
 msgstr "Agregar producto"
+
+#: templates/core/informacion.html:194
+msgid "See messages"
+msgstr "Ver mensajes"
+
+#: templates/core/informacion.html:199
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#~ msgid "Enterprise Manager"
+#~ msgstr "Manejador de empresa"

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+    <h1>
+        {% trans 'Page Counter' %}
+    </h1>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    {% trans "Url" %}
+                </th>
+                <th>
+                    {% trans "Count" %}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for element in pages_visited %}
+                <tr>
+                    <td>
+                        {{ element.url }}
+                    </td>
+                    <td>
+                        {{ element.url_counts }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
