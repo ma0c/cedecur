@@ -399,6 +399,9 @@ class ListContact(
     slug_url_kwarg = conf.ENTERPRISE_SLUG_URL_KWARG
     template_name = "core/contact/list.html"
 
+    def get_queryset(self):
+        return models.Contact.objects.filter(enterprise=self.get_enterprise())
+
 
 class MyEnterprises(
     LoginRequiredMixin,
