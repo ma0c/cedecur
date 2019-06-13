@@ -35,14 +35,25 @@ $(window).on('load', function() {
 	/*------------------
 		Category menu
 	--------------------*/
-	$('.verMas').hover( function(e) {
+	$('.verMas').click( function(e) {
 		$($(this).parent().parent()[0]).addClass('active');
+		/*$($(this).children('i').removeClass('fa fa-plus'));
+		$($(this).children('i').addClass('fa fa-minus'));
+		$($(this).removeClass('verMas'));
+		$($(this).addClass('verMenos'));*/
+		$(this).addClass('notShow');
+		$($(this).next('.verMenos')[0]).removeClass('notShow');
 		e.preventDefault();
+		
 
 	});
-	$('.verMas').mouseleave( function(e) {
+	
+	$('.verMenos').click( function(e) {
 		$($(this).parent().parent()[0]).removeClass('active');
+		$(this).addClass('notShow');
+		$($(this).prev('.verMas')[0]).removeClass('notShow');
 		e.preventDefault();
+		
 	});
 	
 

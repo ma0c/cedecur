@@ -12,14 +12,17 @@
                 <img src="../../../../../media/Logo-Curvas.png" alt="">
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-                <h2 style="color: black">{% trans "Discount for "%} {{ element.product }}</h2>
+                <h2 style="color: black">{% trans "Discount for "%} {{ element.name }}</h2>
             <br>
             <p style="color: black; font-weight: bold;">
                 {% trans "Valid until" %} {{ element.expires_on|date:"Y F d" }}
             </p>
             <p style="color: black">Presenta este cupon impreso para acceder a tu descuento.</p>
                 <img src="data:image/jpeg;base64, {{ qr_image }}" alt="qr_code" class="img-responsive">
-                <p><small style="color: black">
+                <p style="color: black"><small>Aplican términos y condiciones:</small>
+                    <br>
+                <small>{{element.description}}</small></p>
+                <p><small style="color: lightslategray">
                     {{ element.id }} - {{ element.code }}
                 </small></p>
             </div>

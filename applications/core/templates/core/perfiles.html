@@ -36,8 +36,8 @@
                                 <h2 class="fw-title">Categorías</h2>
                                 <ul class="category-menu">
                                     {% for category in categories %}
-                                        <li class="activarSub">
-                                            <p class="row align-items-center" style="margin-left: 0"><a class="col-10" href="{% url category_filter_url_name category.slug %}">{{ category.name }}</a> <span class="btn btn-success verMas col-2"><i class="fa fa-plus"></i></span></p>
+                                        <li>
+                                            <p class="row align-items-center" style="margin-left: 0"><a class="col-10" href="{% url category_filter_url_name category.slug %}">{{ category.name }}</a> <span class="btn btn-success verMas col-2"><i class="fa fa-plus"></i></span><span class="btn btn-success notShow verMenos col-2"><i class="fa fa-minus"></i></span></p>
                                             <ul class="sub-menu">
                                                 {% for subcategory in category.subcategory_set.all %}
                                                     <li>
