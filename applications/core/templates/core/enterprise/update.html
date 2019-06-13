@@ -3,8 +3,8 @@
 {% load input_checker %}
 {% load staticfiles %}
 {% block content %}
-    <h1 class="header-padding">{% trans 'Update' %} {{ model_name }}</h1>
-    <div class="row">
+    <h1 class="header-padding titulos">{% trans 'Update' %} {{ model_name }}</h1>
+    <div class="row mensajes">
         <div class="col">
             <div class="col-lg-4 col-sm-6">
                 <div class="product-item">
@@ -71,7 +71,7 @@
                                 {% trans 'Back' %}
                         </div>
                     </a>
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-info">
                         {% trans 'update' %}
                     </button>
                 </div>

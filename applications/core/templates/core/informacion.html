@@ -42,23 +42,28 @@
                                     <img src="{% static 'img/default-placeholder.png' %}" alt="">
                                 {% endif %}
                             </div>
-                            <div class="informacion-basica filter-widget text-center">
-                                <h2 class="fw-title">Información Basica</h2>
-                                <p1>Nombre : {{ enterprise.name }}</p1>
+                            <div class="informacion-basica text-center">
+                                <!--h2 class="fw-title">Información Basica</h2-->
+                                <p class="p1 pTit">{{ enterprise.name }}</p>
+                                <p class="p1">Dirección</p>
+                                <p class="p1">{{enterprise.whatsapp_number}}</p>
                             </div>
                             {% if enterprise.whatsapp_number %}
-                                <div class="text-center">
+                                <div class="text-center" style="margin-top:15px;">
                                     <a href="https://wa.me/57{{ enterprise.whatsapp_number }}">
                                         <button id="btnWpp" class="btn btn-success my-2 my-sm-0" ><span class="fa fa-whatsapp"><p1> Escribenos!</p1></span></button>
                                     </a>
                                 </div>
                             {% endif %}
                             {% if update_object_reversed_url %}
+                            <div class="text-center" style="margin-top: 10px;">
                                 <a href="{{ update_object_reversed_url }}">
-                                    <button class="btn btn-primary">
+                                    <button class="btn btn-info">
                                         {% trans 'Update' %}
                                     </button>
                                 </a>
+                            </div>
+                                
                             {% endif %}
                         </div>
                     </div>
@@ -68,8 +73,8 @@
                             {% for discount in discounts %}
 
                                 <div class="cuadro-descuentos-verde shift_the_nav">
-                                    <br>
-                                    <p>{{ discount.product }}</p>
+                                    
+                                    <p class="dctNom">{{ discount.product }}</p>
                                     <div class="product-item">
                                         <div class="pi-pic">
                                             <!--<div class="tag-sale">ON SALE</div>-->
@@ -82,22 +87,23 @@
                                             </a>
                                         </div>
                                     </div>
-                                    <span>
+                                    <p class="dctEx">
                                         {% trans "Expires" %} : {{ discount.expires_on|date:"d F Y" }}
-                                    </span>
-                                    {% if delete_discount_url %}
-                                        <a href="{% url delete_discount_url enterprise.slug discount.slug %}">
+                                        {% if delete_discount_url %}  
+                                        <a class="btn btn-info" href="{% url delete_discount_url enterprise.slug discount.slug %}">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     {% endif %}
-                                    <br>
+                                    </p>
+                                    
+                                    
                                 </div>
                             {% empty %}
 
                             {% endfor %}
                             {% if add_discount_reversed_url %}
                                 <a href="{{ add_discount_reversed_url }}">
-                                    <button class="btn btn-primary">
+                                    <button class="btn btn-info">
                                         {% trans 'Add Discount' %}
                                     </button>
                                 </a>
@@ -174,24 +180,24 @@
                         {% if add_product_reversed_url %}
                             <div class="col-12 col-xl-12">
                                 <a href="{{ add_product_reversed_url }}">
-                                    <button>{% trans 'Add product' %}</button>
+                                    <button class="btn btn-info">{% trans 'Add product' %}</button>
                                 </a>
                             </div>
                         {% endif %}
                         <div class="col-12 col-xl-12 contact-info">
                             <form class="contact-form text-center" method="POST" action="{{ add_contact_reversed_url }}">
                                 {% csrf_token %}
-                                <input type="text" placeholder="Nombre" name="name">
-                                <input type="text" placeholder="E-mail" name="email">
-                                <input type="number" placeholder="Celular" name="tel">
-                                <input type="text" placeholder="Titulo" name="title">
-                                <p><textarea placeholder="Mensaje" name="description"></textarea></p>
+                                <input type="text" placeholder="Nombre" name="name" required>
+                                <input type="text" placeholder="E-mail" name="email" required>
+                                <input type="number" placeholder="Celular" name="tel" required>
+                                <input type="text" placeholder="Titulo" name="title" required>
+                                <p><textarea placeholder="Mensaje" name="description" required></textarea></p>
                                 <button class="site-btn">ENVIAR</button>
                             </form>
                         </div>
                         {% if list_contact_url_reversed %}
                             <a href="{{ list_contact_url_reversed }}">
-                                <button>{% trans "See messages" %}</button>
+                                <button class="btn btn-info">{% trans 'Ver mensajes' %}</button>
                             </a>
                         {% endif %}
 
