@@ -42,3 +42,26 @@ You can build your container
 ```bash
 docker build -t contraslash/cedecur .
 ```
+
+## Deploy into production
+
+To deploy into a production server, compile the docker image inside your production server and
+execute the following commands modifying the values inside the interpolation strings (the ones inside ${})
+
+```bash
+
+docker service rm cedecur
+docker service create \
+    --name cedecur \
+    --publish 8000:8000 \
+    --env SITE_ID=2 \
+    --env ENV=PRODUCTION \
+    --env DEBUG=False \
+    --env CONFIG_DATABASE_DATABASE=${DB_DATABASE} \
+    --env CONFIG_DATABASE_USERNAME=${DB_USER} \
+    --env CONFIG_DATABASE_PASSWORD=${DB_PASSWORD}" \
+    --env CONFIG_DATABASE_HOST=${DB_HOSTS} \
+    --env CONTROL_DATABASE_PORT=3306 \
+    --mount type=bind,source=${LOCAL_MEDIAFOLDER},destination=/code/media \
+    contraslash/cedecur
+```
