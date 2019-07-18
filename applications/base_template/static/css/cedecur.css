@@ -1,3 +1,6 @@
+.body > section.footer-section.do-not-print > div > div > div.col-xl-8.col-sm-7.col-6 > div > div.social-links.social-links-border.text-right.col-xl-12.col-sm-12.col-12 > a.instagram:hover{
+	background-color: #C13584;
+}
 
 .collapse.show {
     display: block;
